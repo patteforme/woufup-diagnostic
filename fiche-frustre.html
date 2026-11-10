@@ -6,77 +6,77 @@
 <title>WoufUp – Profil Frustré Explosif</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#00284F;--navy2:#003a6e;--gold:#F4BD45;--orange:#FF6C22;--sky:#7FC4F7;--white:#fff;--muted:rgba(255,255,255,.55);--card:rgba(255,255,255,.06);--border:rgba(255,255,255,.1)}
+:root{--navy:#00284F;--navy2:#003a6e;--gold:#F4BD45;--orange:#FF6C22;--sky:#7FC4F7;--white:#fff;--muted:rgba(255,255,255,.58);--card:rgba(255,255,255,.055);--border:rgba(255,255,255,.09)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased}
-.nav{background:rgba(0,28,55,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:1.1rem;color:var(--gold);text-decoration:none}
-.nav-cta{background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 20px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.85rem;cursor:pointer;text-decoration:none}
-.urgency-bar{background:var(--gold);color:var(--navy);padding:10px 20px;text-align:center;font-size:.82rem;font-weight:800;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
-.countdown{font-weight:900;font-size:.95rem;background:rgba(0,0,0,.12);border-radius:6px;padding:2px 10px;letter-spacing:.04em}
-.hero{padding:60px 24px 56px;max-width:700px;margin:0 auto}
-.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(244,189,69,.15);color:var(--gold);border:1px solid rgba(244,189,69,.3);border-radius:6px;font-weight:900;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;margin-bottom:22px}
-.hero h1{font-size:clamp(1.75rem,5.5vw,2.6rem);font-weight:900;line-height:1.15;margin-bottom:16px}
+.nav{background:rgba(0,28,55,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:1.05rem;color:var(--gold);text-decoration:none}
+.nav-cta{background:var(--gold);color:var(--navy);border:none;border-radius:7px;padding:9px 20px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.82rem;cursor:pointer;text-decoration:none}
+.urgency-bar{background:var(--gold);color:var(--navy);padding:11px 20px;text-align:center;font-size:.8rem;font-weight:800;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+.countdown{font-weight:900;font-size:.92rem;background:rgba(0,0,0,.1);border-radius:5px;padding:2px 10px;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.hero{padding:64px 24px 56px;max-width:680px;margin:0 auto}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(244,189,69,.12);color:var(--gold);border:1px solid rgba(244,189,69,.28);border-radius:5px;font-weight:900;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;margin-bottom:24px}
+.hero h1{font-size:clamp(1.8rem,5.5vw,2.65rem);font-weight:900;line-height:1.13;margin-bottom:18px;letter-spacing:-.02em}
 .hero h1 em{font-style:normal;color:var(--gold)}
-.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.65;margin-bottom:32px;max-width:560px}
-.hero-btn{display:inline-block;background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:18px 48px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.05rem;cursor:pointer;text-decoration:none;box-shadow:0 8px 32px rgba(244,189,69,.35);transition:transform .15s,box-shadow .2s}
-.hero-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(244,189,69,.45)}
-.hero-reassure{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:10px;display:block}
-.proof-bar{background:rgba(255,255,255,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 24px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap}
+.hero-sub{font-size:1.02rem;color:var(--muted);line-height:1.7;margin-bottom:36px;max-width:540px}
+.hero-btn{display:inline-block;background:var(--gold);color:var(--navy);border:none;border-radius:9px;padding:17px 44px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;cursor:pointer;text-decoration:none;box-shadow:0 6px 28px rgba(244,189,69,.32);transition:transform .15s,box-shadow .2s}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(244,189,69,.44)}
+.hero-reassure{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:12px;display:block}
+.proof-bar{background:rgba(255,255,255,.035);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 24px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
 .proof-item{text-align:center}
-.proof-num{font-size:1.35rem;font-weight:900;color:var(--gold)}
-.proof-label{font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.section{max-width:700px;margin:0 auto;padding:52px 24px}
-.tag{font-size:.72rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
-.section h2{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:900;line-height:1.25;margin-bottom:20px}
+.proof-num{font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:-.01em}
+.proof-label{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+.section{max-width:680px;margin:0 auto;padding:52px 24px}
+.tag{font-size:.68rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
+.section h2{font-size:clamp(1.3rem,4vw,1.85rem);font-weight:900;line-height:1.22;margin-bottom:20px;letter-spacing:-.02em}
 .section h2 em{font-style:normal;color:var(--gold)}
-.section p{color:var(--muted);line-height:1.7;font-size:.97rem}
-.traits{display:flex;flex-direction:column;gap:10px;margin-top:24px}
-.trait{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
-.trait p{font-size:.92rem;font-weight:700;color:var(--white);line-height:1.45}
-.cards{display:flex;flex-direction:column;gap:14px;margin-top:24px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:14px}
-.card-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
-.card h3{font-size:.97rem;font-weight:900;margin-bottom:6px}
-.card p{font-size:.84rem;color:var(--muted);line-height:1.55}
-.guide-blocks{display:flex;flex-direction:column;gap:12px;margin-top:24px}
-.gb{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
-.gb-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
-.gb h4{font-size:.95rem;font-weight:900;margin-bottom:4px}
-.gb p{font-size:.82rem;color:var(--muted);line-height:1.45}
-.preview{margin-top:28px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.preview-head{background:rgba(255,255,255,.06);border-bottom:1px solid var(--border);padding:12px 20px;font-size:.72rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+.section>p{color:var(--muted);line-height:1.72;font-size:.96rem}
+.traits{display:flex;flex-direction:column;gap:9px;margin-top:26px}
+.trait{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;align-items:flex-start;gap:13px}
+.trait-line{width:3px;min-height:20px;background:var(--gold);border-radius:2px;flex-shrink:0;align-self:stretch}
+.trait p{font-size:.91rem;font-weight:700;color:var(--white);line-height:1.48}
+.cards{display:flex;flex-direction:column;gap:12px;margin-top:26px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;gap:16px;align-items:flex-start}
+.card-num{width:32px;height:32px;border-radius:8px;background:rgba(244,189,69,.14);border:1px solid rgba(244,189,69,.25);color:var(--gold);font-weight:900;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card h3{font-size:.95rem;font-weight:900;margin-bottom:7px}
+.card p{font-size:.83rem;color:var(--muted);line-height:1.58}
+.guide-blocks{display:flex;flex-direction:column;gap:11px;margin-top:26px}
+.gb{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start}
+.gb-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+.gb h4{font-size:.93rem;font-weight:900;margin-bottom:5px}
+.gb p{font-size:.81rem;color:var(--muted);line-height:1.5}
+.preview{margin-top:30px;background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.preview-head{background:rgba(255,255,255,.05);border-bottom:1px solid var(--border);padding:12px 20px;font-size:.7rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.12em}
 .preview-body{padding:20px}
-.pstep{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.pstep{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--border)}
 .pstep:last-child{border-bottom:none}
-.pnum{width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:900;font-size:.72rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pstep p{font-size:.87rem;line-height:1.5;font-weight:600}
+.pnum{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:900;font-size:.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pstep p{font-size:.86rem;line-height:1.52;font-weight:600}
 .blur-wrap{position:relative}
-.blur-wrap .pstep{filter:blur(3.5px);user-select:none;pointer-events:none}
-.blur-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,transparent,rgba(0,28,55,.9) 60%);font-size:.82rem;font-weight:900;color:var(--gold)}
-.testis{display:flex;flex-direction:column;gap:14px;margin-top:24px}
-.testi{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
-.stars{color:var(--gold);font-size:.9rem;margin-bottom:10px;letter-spacing:2px}
-.testi-text{font-size:.9rem;line-height:1.6;font-style:italic;margin-bottom:14px}
+.blur-wrap .pstep{filter:blur(3px);user-select:none;pointer-events:none}
+.blur-lock{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,transparent 0%,rgba(0,28,55,.95) 55%);font-size:.8rem;font-weight:900;color:var(--gold)}
+.testis{display:flex;flex-direction:column;gap:13px;margin-top:26px}
+.testi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.stars{color:var(--gold);font-size:.82rem;margin-bottom:11px;letter-spacing:3px}
+.testi-text{font-size:.89rem;line-height:1.65;font-style:italic;margin-bottom:14px;color:rgba(255,255,255,.88)}
 .testi-author{display:flex;align-items:center;gap:10px}
-.avatar{width:36px;height:36px;border-radius:50%;background:rgba(244,189,69,.2);border:1px solid rgba(244,189,69,.4);color:var(--gold);font-weight:900;font-size:.88rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.tname{font-size:.85rem;font-weight:900}
-.tdog{font-size:.75rem;color:var(--muted)}
-.cta-section{background:linear-gradient(160deg,var(--navy2) 0%,#001e3c 100%);border-top:1px solid var(--border);padding:60px 24px;text-align:center}
-.cta-inner{max-width:580px;margin:0 auto}
-.expert-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:12px;padding:12px 20px;margin-bottom:28px;font-size:.82rem;color:var(--muted)}
-.expert-badge strong{color:var(--white)}
-.cta-section h2{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:900;line-height:1.2;margin-bottom:16px}
+.avatar{width:34px;height:34px;border-radius:50%;background:rgba(244,189,69,.14);border:1px solid rgba(244,189,69,.35);color:var(--gold);font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tname{font-size:.84rem;font-weight:900}
+.tdog{font-size:.73rem;color:var(--muted);margin-top:1px}
+.cta-section{background:linear-gradient(160deg,#002f5a 0%,#001830 100%);border-top:1px solid var(--border);padding:64px 24px;text-align:center}
+.cta-inner{max-width:560px;margin:0 auto}
+.expert-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:11px 18px;margin-bottom:32px;font-size:.8rem;color:var(--muted);text-align:left}
+.expert-badge strong{color:rgba(255,255,255,.9)}
+.cta-section h2{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:900;line-height:1.18;margin-bottom:14px;letter-spacing:-.02em}
 .cta-section h2 em{font-style:normal;color:var(--gold)}
-.cta-section > .cta-inner > p{color:var(--muted);font-size:.97rem;line-height:1.65;margin-bottom:28px}
-.what-list{display:flex;flex-direction:column;gap:8px;margin-bottom:32px;text-align:left}
-.what-item{display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:700}
-.what-item::before{content:'✓';color:var(--gold);font-size:1rem;font-weight:900;flex-shrink:0}
-.cta-btn{display:block;width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:12px;padding:20px 40px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;cursor:pointer;text-decoration:none;text-align:center;box-shadow:0 8px 40px rgba(244,189,69,.4);transition:transform .15s,box-shadow .2s}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 48px rgba(244,189,69,.55)}
-.reassure{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px;font-size:.75rem;color:rgba(255,255,255,.35);font-weight:700}
+.cta-section>.cta-inner>p{color:var(--muted);font-size:.95rem;line-height:1.68;margin-bottom:30px}
+.what-list{display:flex;flex-direction:column;gap:9px;margin-bottom:34px;text-align:left}
+.what-item{display:flex;align-items:center;gap:11px;font-size:.88rem;font-weight:700;color:rgba(255,255,255,.9)}
+.what-item::before{content:'✓';color:var(--gold);font-weight:900;font-size:1rem;flex-shrink:0}
+.cta-btn{display:block;width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:11px;padding:19px 40px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.05rem;cursor:pointer;text-decoration:none;text-align:center;box-shadow:0 6px 36px rgba(244,189,69,.38);transition:transform .15s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 44px rgba(244,189,69,.52)}
+.reassure{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:.73rem;color:rgba(255,255,255,.3);font-weight:700}
 </style>
 </head>
 <body>
@@ -85,35 +85,35 @@ body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-
   <a class="nav-cta" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank">Obtenir mon Guide →</a>
 </nav>
 <div class="urgency-bar">
-  <span>⏱ Offre personnalisée expire dans</span>
+  <span>Offre personnalisée disponible encore</span>
   <span class="countdown" id="cd">--:--</span>
   <span>· Accès immédiat après paiement</span>
 </div>
 
 <section class="hero">
-  <div class="pill">💥 Profil identifié</div>
-  <h1 id="h1"><em id="dname">Ton chien</em> est un<br><em>Frustré Explosif</em> 💥</h1>
-  <p class="hero-sub">Il n'est pas "dominant" ou "méchant". Il accumule une frustration que personne ne lui a appris à gérer — et elle explose au mauvais moment. Ça se travaille.</p>
+  <div class="pill">Profil identifié</div>
+  <h1 id="h1"><em id="dname">Ton chien</em> est un<br><em>Frustré Explosif</em></h1>
+  <p class="hero-sub">Il n'est pas dominant. Il n'est pas méchant. Il accumule une frustration que personne ne lui a appris à gérer — et elle part au mauvais moment. C'est un apprentissage qui manque, pas un défaut de caractère.</p>
   <a class="hero-btn" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank">Obtenir le Guide personnalisé →</a>
-  <span class="hero-reassure">🔒 Accès immédiat · Satisfait ou remboursé 30 jours</span>
+  <span class="hero-reassure">Accès immédiat · Satisfait ou remboursé 30 jours</span>
 </section>
 
 <div class="proof-bar">
   <div class="proof-item"><div class="proof-num">+400</div><div class="proof-label">chiens accompagnés</div></div>
-  <div class="proof-item"><div class="proof-num">5★</div><div class="proof-label">note moyenne</div></div>
+  <div class="proof-item"><div class="proof-num">5 ★</div><div class="proof-label">note moyenne</div></div>
   <div class="proof-item"><div class="proof-num">Semaine 1</div><div class="proof-label">premiers changements</div></div>
-  <div class="proof-item"><div class="proof-num">30j</div><div class="proof-label">satisfait ou remboursé</div></div>
+  <div class="proof-item"><div class="proof-num">30 j</div><div class="proof-label">satisfait ou remboursé</div></div>
 </div>
 
 <section class="section">
   <div class="tag">Ce que ça veut dire concrètement</div>
   <h2>Pourquoi <em id="s1n">ton chien</em><br>explose quand il est bloqué</h2>
-  <p>Le profil Frustré Explosif, c'est un chien qui a un seuil de tolérance à la frustration très bas. Il n'est pas agressif par nature — il ne sait tout simplement pas gérer ce qu'il ressent quand ça ne va pas dans son sens.</p>
+  <p>Le profil Frustré Explosif, c'est un chien dont le seuil de tolérance à la frustration est très bas. Dès qu'il n'obtient pas ce qu'il veut — un autre chien, une personne, de la nourriture — le circuit émotionnel court-circuite la réflexion.</p>
   <div class="traits">
-    <div class="trait"><div class="dot"></div><p>Il grogne, aboie ou saute quand il ne peut pas atteindre ce qu'il veut (un autre chien, un humain, une nourriture)</p></div>
-    <div class="trait"><div class="dot"></div><p>Il tire en laisse de façon explosive, et ça empire à chaque promenade frustrante</p></div>
-    <div class="trait"><div class="dot"></div><p>Il monte en pression vite et redescend lentement — même après que la situation est passée</p></div>
-    <div class="trait"><div class="dot"></div><p>Il réagit de façon disproportionnée à des petits blocages — ce qui rend les sorties stressantes pour tout le monde</p></div>
+    <div class="trait"><div class="trait-line"></div><p>Il grogne, aboie ou saute quand il ne peut pas atteindre ce qu'il veut, même après quelques secondes</p></div>
+    <div class="trait"><div class="trait-line"></div><p>Il tire en laisse de façon explosive et ça empire à chaque promenade frustrante</p></div>
+    <div class="trait"><div class="trait-line"></div><p>Il monte en pression vite et redescend lentement — l'état d'excitation reste longtemps après</p></div>
+    <div class="trait"><div class="trait-line"></div><p>Il réagit de façon disproportionnée à des petits blocages — ce qui rend les sorties stressantes pour tout le monde</p></div>
   </div>
 </section>
 
@@ -121,27 +121,27 @@ body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-
   <div class="tag">Ce qui se passe dans son cerveau</div>
   <h2>Ce n'est pas du caractère.<br>C'est un <em>apprentissage qui manque</em>.</h2>
   <div class="cards">
-    <div class="card"><span class="card-icon">🧠</span><div><h3>Son cortex préfrontal ne prend pas le dessus</h3><p>Quand la frustration monte, son cerveau émotionnel court-circuite la réflexion. Ce n'est pas de la mauvaise volonté — il n'a pas encore les circuits pour s'autoréguler.</p></div></div>
-    <div class="card"><span class="card-icon">📈</span><div><h3>Son seuil baisse à force d'expositions</h3><p>Chaque fois qu'il est exposé à une situation frustrante sans outil pour la gérer, son seuil se recalibre vers le bas. Les réactions deviennent plus fréquentes et plus intenses.</p></div></div>
-    <div class="card"><span class="card-icon">🌱</span><div><h3>La tolérance à la frustration, ça s'apprend</h3><p>Avec un protocole progressif bien cadré, le cerveau réapprend à gérer la frustration par paliers. Les premiers changements sont souvent visibles dès la première semaine.</p></div></div>
+    <div class="card"><div class="card-num">01</div><div><h3>Son cortex préfrontal ne prend pas le dessus</h3><p>Quand la frustration monte, son cerveau émotionnel court-circuite la réflexion. Ce n'est pas de la mauvaise volonté — il n'a pas encore les circuits pour s'autoréguler face au blocage.</p></div></div>
+    <div class="card"><div class="card-num">02</div><div><h3>Son seuil baisse à force d'expositions non gérées</h3><p>Chaque fois qu'il est exposé à une situation frustrante sans outil pour la traverser, son seuil se recalibre vers le bas. Les réactions deviennent plus fréquentes et plus intenses.</p></div></div>
+    <div class="card"><div class="card-num">03</div><div><h3>La tolérance à la frustration, ça s'apprend</h3><p>Avec un protocole progressif bien cadré — travail sous seuil, décompression, exposition contrôlée — le cerveau réapprend à gérer la frustration par paliers. Les premiers changements arrivent dès la semaine 1.</p></div></div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0">
   <div class="testis">
-    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">"Thor tirait tellement fort en laisse que je ne pouvais plus sortir avec lui. En deux semaines d'exercices progressifs, il a appris à rester calme au bout de la laisse quand on croise un autre chien. Je suis vraiment soulagée."</p><div class="testi-author"><div class="avatar">S</div><div><div class="tname">Sophie R.</div><div class="tdog">Thor, Malinois 3 ans • Frustré Explosif</div></div></div></div>
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">« Thor tirait tellement fort en laisse que je ne pouvais plus sortir avec lui. En deux semaines d'exercices progressifs, il a appris à rester calme au bout de la laisse quand on croise un autre chien. Je suis vraiment soulagée. »</p><div class="testi-author"><div class="avatar">S</div><div><div class="tname">Sophie R.</div><div class="tdog">Thor, Malinois 3 ans · Frustré Explosif</div></div></div></div>
   </div>
 </section>
 
 <section class="section" style="padding-top:0">
   <div class="tag">Ce que tu reçois</div>
-  <h2>Un guide conçu pour<br><em id="gn">le Frustré Explosif de ton chien</em></h2>
-  <p>Pas un PDF générique. Un bilan comportemental basé sur ses réponses au diagnostic, et un plan semaine par semaine avec des exercices concrets adaptés à son profil exact.</p>
+  <h2>Un guide construit sur<br><em id="gn">le profil de ton chien</em></h2>
+  <p>Pas un PDF générique sur la frustration. Un bilan basé sur ses réponses exactes au diagnostic, et un plan structuré semaine par semaine avec les bons exercices dans le bon ordre.</p>
   <div class="guide-blocks">
-    <div class="gb"><span class="gb-icon">🔍</span><div><h4>Bilan comportemental personnalisé</h4><p>Analyse du profil Frustré appliquée à ses réponses — ses déclencheurs de frustration, son niveau d'explosivité, ce qui empire et ce qui aide déjà</p></div></div>
-    <div class="gb"><span class="gb-icon">🧠</span><div><h4>Comprendre pourquoi il explose</h4><p>L'explication claire de ce qui se passe dans son cerveau quand la frustration monte — pour lire ses signaux avant que ça parte et intervenir au bon moment</p></div></div>
-    <div class="gb"><span class="gb-icon">📅</span><div><h4>Plan semaine par semaine</h4><p>Des étapes précises, progressives, dans le bon ordre — avec les critères pour savoir quand passer à la suite sans rechute</p></div></div>
-    <div class="gb"><span class="gb-icon">🎯</span><div><h4>Exercices de tolérance à la frustration</h4><p>Exercices de décompression, de gestion de l'excitation, de travail sous seuil — des choses concrètes à mettre en place dès le premier jour</p></div></div>
+    <div class="gb"><div class="gb-dot"></div><div><h4>Bilan comportemental personnalisé</h4><p>Analyse du profil Frustré appliquée à ses réponses — ses déclencheurs de frustration, son niveau d'explosivité, ce qui empire et ce qui aide déjà</p></div></div>
+    <div class="gb"><div class="gb-dot"></div><div><h4>Comprendre pourquoi il explose</h4><p>L'explication précise de ce qui se passe dans son cerveau quand la frustration monte — pour lire ses signaux avant que ça parte et intervenir au bon moment</p></div></div>
+    <div class="gb"><div class="gb-dot"></div><div><h4>Plan semaine par semaine</h4><p>Des étapes précises, progressives, dans le bon ordre — avec les critères pour savoir quand passer à la suite sans rechute</p></div></div>
+    <div class="gb"><div class="gb-dot"></div><div><h4>Exercices de tolérance à la frustration</h4><p>Exercices de décompression, de gestion de l'excitation, de travail sous seuil — des choses concrètes à mettre en place dès le premier jour</p></div></div>
   </div>
 </section>
 
@@ -149,13 +149,13 @@ body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-
   <div class="tag">Aperçu du guide</div>
   <h2>Extrait du <em>plan semaine 1</em></h2>
   <div class="preview">
-    <div class="preview-head">📄 Semaine 1 — Travailler sous le seuil de frustration</div>
+    <div class="preview-head">Semaine 1 — Travailler sous le seuil de frustration</div>
     <div class="preview-body">
-      <div class="pstep"><div class="pnum">1</div><p>Identifie ses 3 déclencheurs principaux et leur intensité habituelle (distance, durée, contexte). Ce mapping est la base de tout le protocole.</p></div>
+      <div class="pstep"><div class="pnum">1</div><p>Identifie ses 3 déclencheurs principaux et leur intensité habituelle (distance, durée, contexte). Ce mapping est la base de tout le protocole — sans ça, on travaille à l'aveugle.</p></div>
       <div class="pstep"><div class="pnum">2</div><p>Commence les expositions à une distance où il reste sous son seuil — il doit pouvoir voir le déclencheur sans réagir. C'est ton point de départ, pas ton objectif final.</p></div>
       <div class="blur-wrap">
-        <div class="pstep"><div class="pnum">3</div><p>L'exercice de décompression post-exposition : voici comment aider son système nerveux à redescendre après chaque session, pour progresser sans l'épuiser...</p></div>
-        <div class="blur-lock">🔒 Suite dans ton Guide →</div>
+        <div class="pstep"><div class="pnum">3</div><p>Voici l'exercice de décompression post-exposition : comment aider son système nerveux à redescendre après chaque session, pour progresser sans l'épuiser et éviter les rechutes...</p></div>
+        <div class="blur-lock">Suite dans ton Guide →</div>
       </div>
     </div>
   </div>
@@ -165,26 +165,32 @@ body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-
   <div class="tag">Témoignages</div>
   <h2>Ce que ça change<br>pour d'autres <em>Frustrés Explosifs</em></h2>
   <div class="testis">
-    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">"Ce qui m'a aidé c'est de comprendre que je devais travailler SOUS son seuil — avant j'essayais de le corriger quand il explosait déjà, ce qui ne changeait rien. Maintenant on travaille avant que ça parte."</p><div class="testi-author"><div class="avatar">M</div><div><div class="tname">Marc T.</div><div class="tdog">Rex, Berger Allemand 4 ans • Frustré Explosif</div></div></div></div>
-    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">"J'avais peur que ce soit trop tard vu son âge (6 ans). Mais le plan progressif a quand même fonctionné — les promenades sont redevenues agréables. Je regrette de ne pas l'avoir fait avant."</p><div class="testi-author"><div class="avatar">I</div><div><div class="tname">Isabelle L.</div><div class="tdog">Niko, Husky 6 ans • Frustré Explosif</div></div></div></div>
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">« Ce qui m'a aidé c'est de comprendre que je devais travailler SOUS son seuil — avant j'essayais de le corriger quand il explosait déjà, ce qui ne changeait rien. Maintenant on travaille avant que ça parte. »</p><div class="testi-author"><div class="avatar">M</div><div><div class="tname">Marc T.</div><div class="tdog">Rex, Berger Allemand 4 ans · Frustré Explosif</div></div></div></div>
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-text">« J'avais peur que ce soit trop tard vu son âge. Mais le plan progressif a quand même fonctionné — les promenades sont redevenues agréables. Je regrette de ne pas l'avoir fait avant. »</p><div class="testi-author"><div class="avatar">I</div><div><div class="tname">Isabelle L.</div><div class="tdog">Niko, Husky 6 ans · Frustré Explosif</div></div></div></div>
   </div>
 </section>
 
 <div class="cta-section">
   <div class="cta-inner">
-    <div class="expert-badge"><span>👩‍🎓</span><span>Conçu par une <strong>éducatrice comportementaliste canine certifiée</strong> · <strong>+400 chiens accompagnés</strong> · <strong>5★ de note moyenne</strong></span></div>
+    <div class="expert-badge">
+      <span>Conçu par une <strong>éducatrice comportementaliste canine certifiée</strong> · <strong>+400 chiens accompagnés</strong> · <strong>5 étoiles de note moyenne</strong></span>
+    </div>
     <div class="tag" style="text-align:center;margin-bottom:16px">Prêt·e à passer à l'action ?</div>
     <h2>Le Guide personnalisé du<br><em id="ctan">Frustré Explosif de ton chien</em></h2>
     <p>Comprendre pourquoi il explose. Un plan semaine par semaine avec les bons exercices. Des sorties sereines à nouveau.</p>
     <div class="what-list">
       <div class="what-item">Bilan comportemental · analyse du profil Frustré</div>
       <div class="what-item">Plan semaine par semaine avec exercices de tolérance à la frustration</div>
-      <div class="what-item">Des choses concrètes à mettre en place dès jour 1</div>
+      <div class="what-item">Exercices concrets à mettre en place dès le premier jour</div>
       <div class="what-item">Accès immédiat après paiement</div>
-      <div class="what-item">Satisfait ou remboursé 30 jours — sans question</div>
+      <div class="what-item">Satisfait ou remboursé 30 jours — sans condition</div>
     </div>
     <a class="cta-btn" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank" id="ctabtn">J'obtiens le Guide de mon Frustré →</a>
-    <div class="reassure"><span>🔒 Paiement sécurisé</span><span>📄 PDF + accès à vie</span><span>↩️ Remboursé si pas satisfait</span></div>
+    <div class="reassure">
+      <span>Paiement sécurisé</span>
+      <span>Accès à vie</span>
+      <span>Remboursé si pas satisfait</span>
+    </div>
   </div>
 </div>
 
@@ -194,10 +200,10 @@ body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-
   try{n=sessionStorage.getItem('woufup_name')||'ton chien';}catch(e){}
   const cap=n!=='ton chien'?n.charAt(0).toUpperCase()+n.slice(1):null;
   if(cap){
-    document.getElementById('h1').innerHTML='<em>'+cap+'</em> est un<br><em>Frustré Explosif</em> 💥';
+    document.getElementById('h1').innerHTML='<em>'+cap+'</em> est un<br><em>Frustré Explosif</em>';
     ['s1n'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=cap;});
-    document.getElementById('gn').textContent='le Frustré Explosif de '+cap;
-    document.getElementById('ctan').textContent='du Frustré Explosif de '+cap;
+    document.getElementById('gn').textContent='le profil de '+cap;
+    document.getElementById('ctan').textContent='Frustré Explosif de '+cap;
     document.getElementById('ctabtn').textContent='J\'obtiens le Guide de '+cap+' →';
   }
   const KEY='wup_cd_f';
