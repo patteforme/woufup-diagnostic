@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WoufUp — Le chien en seuil bas</title>
+<meta name="description" content="Fiche gratuite WoufUp : Le chien en seuil bas. Comprendre le mécanisme, les déclencheurs, et par où commencer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap">
+<style>
+:root {
+  --navy: #00284F;
+  --sky: #7FC4F7;
+  --yellow: #F4BD45;
+  --orange: #FF6C22;
+  --cream: #F4F2ED;
+  --white: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #FF6C22;
+  --accent-bg: rgba(255,108,34,.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: #f8f9fa; color: var(--text); min-height: 100vh; }
+
+.header { background: var(--navy); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; max-width: 100%; }
+.logo { font-size: 1.3rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; text-decoration: none; }
+.logo span { color: var(--sky); }
+.header-cta { font-size: .8rem; font-weight: 700; color: var(--sky); text-decoration: none; border: 1px solid rgba(127,196,247,.3); padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
+
+.hero { background: linear-gradient(135deg, #2d1200 0%, #5c2800 100%); color: var(--white); padding: 56px 24px 48px; text-align: center; }
+.profile-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,108,34,.12); border: 1px solid #FF6C2233; color: #FF6C22; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 7px 16px; border-radius: 20px; margin-bottom: 20px; }
+.profile-badge .emoji { font-size: 1.1rem; }
+.hero h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 20px; max-width: 580px; margin-left: auto; margin-right: auto; }
+.hero-intro { font-size: 1rem; color: rgba(255,255,255,.75); max-width: 540px; margin: 0 auto 32px; line-height: 1.65; }
+.free-tag { display: inline-block; background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); font-size: .78rem; font-weight: 700; padding: 5px 12px; border-radius: 10px; }
+
+.content { max-width: 700px; margin: 0 auto; padding: 48px 20px 80px; }
+
+.section { margin-bottom: 52px; }
+.section-label { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section h2 { font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-bottom: 20px; line-height: 1.25; }
+
+.mechanism-item { margin-bottom: 24px; border-left: 3px solid var(--accent); padding-left: 20px; }
+.mechanism-item h3 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+.mechanism-item p { font-size: .93rem; color: #444; line-height: 1.65; }
+
+.signs-list { display: flex; flex-direction: column; gap: 10px; }
+.signs-list li { list-style: none; display: flex; gap: 10px; align-items: flex-start; font-size: .95rem; color: #333; line-height: 1.5; background: var(--white); border-radius: 10px; padding: 12px 16px; border: 1px solid #e8ecf0; }
+.signs-list li::before { content: '→'; color: var(--accent); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+.mistakes-item { background: #fff8f5; border: 1px solid #ffe0d0; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+.mistakes-item h3 { font-size: .95rem; font-weight: 800; color: #c0392b; margin-bottom: 5px; }
+.mistakes-item p { font-size: .88rem; color: #555; line-height: 1.6; }
+
+.steps-item { display: flex; gap: 16px; margin-bottom: 24px; align-items: flex-start; }
+.step-num { flex-shrink: 0; width: 36px; height: 36px; background: var(--navy); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: .9rem; }
+.step-body h3 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+.step-body p { font-size: .9rem; color: #444; line-height: 1.6; }
+
+.cta-block { background: linear-gradient(135deg, var(--navy), #003d75); border-radius: 20px; padding: 40px 32px; color: var(--white); text-align: center; }
+.cta-label { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--sky); margin-bottom: 14px; }
+.cta-block h2 { font-size: 1.4rem; font-weight: 900; margin-bottom: 10px; line-height: 1.3; }
+.cta-block p { font-size: .93rem; color: rgba(255,255,255,.7); margin-bottom: 24px; line-height: 1.6; max-width: 460px; margin-left: auto; margin-right: auto; }
+.includes { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 8px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
+.includes li { font-size: .88rem; color: rgba(255,255,255,.85); display: flex; gap: 10px; align-items: flex-start; }
+.includes li::before { content: '✓'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
+.price-row { display: flex; align-items: baseline; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+.price { font-size: 2.2rem; font-weight: 900; color: var(--white); }
+.price-old { font-size: 1.1rem; color: rgba(255,255,255,.35); text-decoration: line-through; }
+.price-note { font-size: .78rem; color: rgba(255,255,255,.45); }
+.btn-cta { display: inline-block; background: var(--orange); color: var(--white); border-radius: 12px; padding: 16px 32px; text-decoration: none; font-weight: 800; font-size: 1rem; transition: background .2s, transform .1s; margin-bottom: 12px; }
+.btn-cta:hover { background: #e55a12; }
+.btn-cta:active { transform: scale(.98); }
+.guarantee { font-size: .78rem; color: rgba(255,255,255,.4); }
+
+.back-link { text-align: center; margin-bottom: 32px; }
+.back-link a { font-size: .85rem; color: var(--muted); text-decoration: none; }
+.back-link a:hover { color: var(--navy); }
+
+.footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 20px 24px; font-size: .78rem; }
+.footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+.footer a:hover { color: rgba(255,255,255,.7); }
+
+@media (max-width: 480px) {
+  .cta-block { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="logo">Wouf<span>Up</span></a>
+  <a href="/vente" class="header-cta">Voir le programme →</a>
+</div>
+
+<div class="hero">
+  <div class="profile-badge"><span class="emoji">🌋</span>Seuil bas · Réactif</div>
+  <h1>Le chien en seuil bas</h1>
+  <p class="hero-intro">Votre chien a un seuil de tolérance très bas. Ce n'est pas de la méchanceté, ce n'est pas un manque d'éducation. C'est son système nerveux qui déclenche l'alarme trop vite — avant même qu'il ait eu le temps de traiter l'information.</p>
+  <span class="free-tag">Fiche gratuite — pour vous</span>
+</div>
+
+<div class="content">
+
+  <div class="back-link"><a href="/">← Refaire le diagnostic</a></div>
+
+  <div class="section">
+    <div class="section-label">Comprendre</div>
+    <h2>Ce qui se passe dans son cerveau</h2>
+    <div class="mechanism-item"><h3>L'amygdale s'embrase trop vite</h3><p>Chez votre chien, l'amygdale — la zone du cerveau qui gère la peur et la menace — s'active à un seuil très bas. Un chien au loin, une personne qui approche, un bruit soudain : son cerveau interprète ça comme une menace réelle avant même que l'information remonte au cortex préfrontal (la zone de la réflexion).</p></div>
+<div class="mechanism-item"><h3>Il n'est pas "en train de décider" de réagir</h3><p>Quand la réaction part, elle est déjà lancée. Le circuit émotionnel court-circuite le circuit rationnel. C'est pour ça que "corriger" le comportement dans l'instant ne fonctionne pas — vous intervenez après le déclenchement, pas avant.</p></div>
+<div class="mechanism-item"><h3>Son seuil est une donnée neurologique, pas un choix</h3><p>Certains chiens ont génétiquement un seuil plus bas. Certaines expériences précoces l'ont abaissé encore. Ce n'est pas irréversible — mais il faut travailler sur le bon niveau (le seuil lui-même, pas les comportements qu'il produit).</p></div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-label">Observer</div>
+    <h2>Les signaux qui précèdent la réaction</h2>
+    <ul class="signs-list">
+      <li>Corps rigide, muscles tendus — avant même l'aboiement</li>
+<li>Regard fixe sur la "cible", mouvements qui s'arrêtent</li>
+<li>Respiration qui s'accélère, narines qui s'ouvrent</li>
+<li>Oreilles en avant ou plaquées selon l'orientation de la réaction</li>
+<li>Queue haute et rigide ou basse et tendue</li>
+
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Ce qui n'aide pas</div>
+    <h2>Ce qui ne marche pas (et pourquoi)</h2>
+    <div class="mistakes-item"><h3>✕ Punir ou corriger au moment de la réaction</h3><p>La réaction est déjà engagée. Vous ajoutez de la douleur ou de la peur à un chien déjà en état d'urgence — vous renforcez l'association négative avec le déclencheur.</p></div>
+<div class="mistakes-item"><h3>✕ "Le forcer à s'habituer"</h3><p>L'exposition frontale sans protocole de désensibilisation ne crée pas de l'habituation — elle crée de la sensibilisation. Votre chien devient plus réactif, pas moins.</p></div>
+<div class="mistakes-item"><h3>✕ Attendre qu'il "se calme tout seul"</h3><p>Sans intervention structurée, le seuil ne remonte pas. Les réactions peuvent même s'aggraver avec le temps car les circuits neuronaux se renforcent.</p></div>
+
+  </div>
+
+  <div class="section">
+    <div class="section-label">Agir</div>
+    <h2>Par où commencer</h2>
+    <div class="steps-item"><div class="step-num">01</div><div class="step-body"><h3>Identifier le seuil réel de votre chien</h3><p>À quelle distance d'un autre chien est-il encore calme ? C'est votre point de travail. Pas au-delà. La plupart des gens travaillent trop près et entretiennent la réaction sans le savoir.</p></div></div>
+<div class="steps-item"><div class="step-num">02</div><div class="step-body"><h3>Créer des associations positives sous le seuil</h3><p>Chaque fois qu'il voit un déclencheur et qu'il ne réagit pas encore — vous intervenez avec quelque chose de très bon. Pas pour le "récompenser de ne pas réagir" — pour reconstruire l'association émotionnelle.</p></div></div>
+<div class="steps-item"><div class="step-num">03</div><div class="step-body"><h3>Réduire la charge globale de stress</h3><p>Un chien dont le seuil est bas est souvent chroniquement en état d'alerte. Réduire les stimulations globales, améliorer la qualité du sommeil, structurer les promenades — tout ça remonte le seuil de base.</p></div></div>
+
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-label">Programme WoufUp</div>
+    <h2>Vous voulez aller plus loin ?</h2>
+    <p>Le programme WoufUp est construit pour ce profil. 8 semaines de protocole adapté au chien en seuil bas — pas à un chien imaginaire.</p>
+    <ul class="includes">
+      <li>8 semaines de protocole adapté à ce profil</li>
+      <li>Vidéos techniques avec de vrais chiens</li>
+      <li>Journaux de bord pour mesurer les progrès</li>
+      <li>Support email avec Morgane inclus</li>
+      <li>Accès à vie</li>
+    </ul>
+    <div class="price-row">
+      <span class="price">59€</span>
+      <span class="price-old">97€</span>
+      <span class="price-note">paiement unique · accès immédiat</span>
+    </div>
+    <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-cta">Accéder au programme WoufUp →</a>
+    <p class="guarantee">Satisfait ou remboursé 30 jours — sans justification.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  WoufUp · <a href="https://patteforme.com">patteforme.com</a> ·
+  <a href="/cgv">CGV</a> · <a href="/confidentialite">Confidentialité</a>
+</div>
+
+</body>
+</html>

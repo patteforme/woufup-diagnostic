@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WoufUp — Diagnostic comportemental gratuit</title>
+<meta name="description" content="Découvrez le profil neurologique de votre chien en 2 minutes. Gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap">
+<style>
+:root {
+  --navy: #00284F;
+  --sky: #7FC4F7;
+  --yellow: #F4BD45;
+  --orange: #FF6C22;
+  --cream: #F4F2ED;
+  --white: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --bg: #f8f9fa;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+
+.header { background: var(--navy); padding: 16px 24px; display: flex; align-items: center; justify-content: center; }
+.logo { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; }
+.logo span { color: var(--sky); }
+
+.hero { background: linear-gradient(135deg, var(--navy) 0%, #003d75 100%); color: var(--white); padding: 60px 24px 48px; text-align: center; }
+.hero-badge { display: inline-block; background: rgba(127,196,247,.18); border: 1px solid rgba(127,196,247,.3); color: var(--sky); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+.hero h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; line-height: 1.15; margin-bottom: 16px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.hero h1 em { font-style: normal; color: var(--sky); }
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.75); max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }
+.hero-meta { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.hero-meta span { font-size: .82rem; color: rgba(255,255,255,.55); display: flex; align-items: center; gap: 6px; }
+.hero-meta span::before { content: '✓'; color: var(--sky); font-weight: 700; }
+
+.quiz-wrap { flex: 1; max-width: 680px; width: 100%; margin: -20px auto 0; padding: 0 16px 60px; position: relative; z-index: 2; }
+
+.progress-bar { background: rgba(0,40,79,.1); border-radius: 999px; height: 6px; margin-bottom: 8px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--sky), var(--navy)); border-radius: 999px; transition: width .4s ease; width: 0%; }
+.progress-label { font-size: .78rem; color: var(--muted); text-align: right; margin-bottom: 20px; }
+
+.card { background: var(--white); border-radius: 20px; box-shadow: 0 4px 32px rgba(0,40,79,.1); padding: 36px 32px; animation: slideUp .35s ease; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 480px) { .card { padding: 24px 20px; } }
+
+.question-num { font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--navy); opacity: .4; margin-bottom: 10px; }
+.question-text { font-size: 1.25rem; font-weight: 800; color: var(--navy); line-height: 1.35; margin-bottom: 28px; }
+.question-hint { font-size: .88rem; color: var(--muted); margin-top: -20px; margin-bottom: 24px; font-style: italic; }
+
+.options { display: flex; flex-direction: column; gap: 10px; }
+.option { border: 2px solid #e8ecf0; border-radius: 12px; padding: 14px 18px; cursor: pointer; transition: all .18s ease; display: flex; align-items: flex-start; gap: 12px; text-align: left; background: var(--white); font-family: 'Nunito', sans-serif; font-size: .95rem; line-height: 1.45; color: var(--text); width: 100%; }
+.option:hover { border-color: var(--sky); background: #f0f8ff; }
+.option.selected { border-color: var(--navy); background: #f0f4f8; }
+.option-letter { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #e8ecf0; display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 800; color: var(--navy); margin-top: 1px; transition: all .18s; }
+.option.selected .option-letter { background: var(--navy); color: var(--white); }
+.option-text { flex: 1; }
+.option-label { font-weight: 700; display: block; }
+.option-desc { font-size: .84rem; color: var(--muted); margin-top: 2px; display: block; }
+
+.btn-next { margin-top: 24px; width: 100%; background: var(--navy); color: var(--white); border: none; border-radius: 12px; padding: 16px 24px; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: background .2s, transform .1s; display: none; }
+.btn-next:hover { background: #003d75; }
+.btn-next:active { transform: scale(.98); }
+.btn-next.visible { display: block; }
+
+.email-screen { display: none; }
+.profile-reveal { text-align: center; margin-bottom: 28px; }
+.profile-emoji { font-size: 3rem; margin-bottom: 12px; }
+.profile-tag { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: .82rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; }
+.profile-title { font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+.profile-teaser { font-size: .95rem; color: var(--muted); line-height: 1.6; max-width: 400px; margin: 0 auto; }
+
+.tag-reactif { background: rgba(255,108,34,.12); color: var(--orange); }
+.tag-anxieux { background: rgba(127,196,247,.18); color: #2a7ab8; }
+.tag-frustre { background: rgba(244,189,69,.2); color: #9a6a00; }
+
+.email-form-wrap { background: var(--cream); border-radius: 14px; padding: 24px; margin-bottom: 20px; }
+.email-form-wrap p { font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; text-align: center; }
+.input-row { display: flex; flex-direction: column; gap: 10px; }
+.input-row input { border: 2px solid #dde3ea; border-radius: 10px; padding: 13px 16px; font-family: 'Nunito', sans-serif; font-size: .95rem; color: var(--text); background: var(--white); transition: border-color .18s; outline: none; }
+.input-row input:focus { border-color: var(--navy); }
+.btn-email { width: 100%; background: var(--orange); color: var(--white); border: none; border-radius: 10px; padding: 15px 20px; font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; transition: background .2s, transform .1s; }
+.btn-email:hover { background: #e55a12; }
+.btn-email:active { transform: scale(.98); }
+.email-note { font-size: .78rem; color: var(--muted); text-align: center; }
+
+.result-screen { display: none; }
+.result-header { text-align: center; margin-bottom: 24px; }
+.result-header h2 { font-size: 1.3rem; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
+.result-header p { font-size: .92rem; color: var(--muted); }
+
+.fiche-cta { display: block; background: linear-gradient(135deg, var(--navy), #003d75); color: var(--white); border-radius: 14px; padding: 22px 24px; text-decoration: none; text-align: center; margin-bottom: 16px; transition: transform .15s, box-shadow .15s; }
+.fiche-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,40,79,.25); }
+.fiche-cta-label { font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--sky); margin-bottom: 6px; }
+.fiche-cta-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+.fiche-cta-sub { font-size: .84rem; color: rgba(255,255,255,.65); }
+
+.upsell-box { background: linear-gradient(135deg, #003d75, var(--navy)); border-radius: 16px; padding: 28px 24px; color: var(--white); margin-top: 16px; }
+.upsell-box h3 { font-size: 1.15rem; font-weight: 900; margin-bottom: 10px; line-height: 1.3; }
+.upsell-box > p { font-size: .88rem; color: rgba(255,255,255,.7); margin-bottom: 16px; line-height: 1.55; }
+.includes { list-style: none; margin-bottom: 20px; display: flex; flex-direction: column; gap: 7px; }
+.includes li { font-size: .85rem; color: rgba(255,255,255,.85); display: flex; gap: 8px; align-items: flex-start; }
+.includes li::before { content: '✓'; color: var(--sky); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.price { font-size: 2rem; font-weight: 900; color: var(--white); }
+.price-old { font-size: 1.1rem; color: rgba(255,255,255,.4); text-decoration: line-through; }
+.price-label { font-size: .78rem; color: rgba(255,255,255,.5); }
+.btn-upsell { display: block; background: var(--orange); color: var(--white); border-radius: 10px; padding: 15px 20px; text-align: center; text-decoration: none; font-weight: 800; font-size: .95rem; transition: background .2s, transform .1s; margin-bottom: 10px; }
+.btn-upsell:hover { background: #e55a12; }
+.guarantee { font-size: .78rem; color: rgba(255,255,255,.5); text-align: center; }
+
+.quiz-screen { display: block; }
+.quiz-screen.hidden { display: none; }
+
+.footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 20px 24px; font-size: .78rem; }
+.footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+.footer a:hover { color: rgba(255,255,255,.7); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">Wouf<span>Up</span></div>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">Diagnostic gratuit</div>
+  <h1>Pourquoi votre chien réagit<br>comme <em>ça</em> ?</h1>
+  <p class="hero-sub">7 questions pour comprendre le profil neurologique de votre chien — et enfin savoir quoi faire.</p>
+  <div class="hero-meta">
+    <span>2 minutes</span>
+    <span>100% gratuit</span>
+    <span>Résultat personnalisé</span>
+  </div>
+</div>
+
+<div class="quiz-wrap">
+
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">Question 1 / 7</div>
+
+  <!-- QUIZ -->
+  <div class="card quiz-screen" id="quizScreen">
+    <div class="question-num" id="questionNum">Question 1</div>
+    <div class="question-text" id="questionText"></div>
+    <div class="question-hint" id="questionHint" style="display:none"></div>
+    <div class="options" id="optionsContainer"></div>
+    <button class="btn-next" id="btnNext" onclick="nextQuestion()">Continuer →</button>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="card email-screen" id="emailScreen">
+    <div class="profile-reveal">
+      <div class="profile-emoji" id="profileEmoji"></div>
+      <div class="profile-tag" id="profileTag"></div>
+      <div class="profile-title" id="profileTitle"></div>
+      <p class="profile-teaser" id="profileTeaser"></p>
+    </div>
+    <div class="email-form-wrap">
+      <p>Recevez la fiche complète pour ce profil — gratuitement</p>
+      <form onsubmit="submitEmail(event)">
+        <div class="input-row">
+          <input type="text" id="firstName" placeholder="Votre prénom" required autocomplete="given-name">
+          <input type="email" id="emailInput" placeholder="Votre adresse email" required autocomplete="email">
+          <button type="submit" class="btn-email" id="btnEmail">Recevoir ma fiche gratuite →</button>
+        </div>
+      </form>
+    </div>
+    <p class="email-note">Pas de spam. Désabonnement en un clic.</p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="card result-screen" id="resultScreen">
+    <div class="result-header">
+      <h2 id="resultTitle"></h2>
+      <p id="resultSub"></p>
+    </div>
+    <a href="#" class="fiche-cta" id="ficheCta">
+      <div class="fiche-cta-label">Votre fiche gratuite</div>
+      <div class="fiche-cta-title" id="ficheCtaTitle"></div>
+      <div class="fiche-cta-sub">Mécanisme, déclencheurs, premiers exercices →</div>
+    </a>
+    <div class="upsell-box">
+      <p style="font-size:.78rem;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px">Pour aller plus loin</p>
+      <h3>Un programme fait pour ce profil. Pas pour un chien imaginaire.</h3>
+      <p>La fiche vous explique le mécanisme. Le programme vous accompagne semaine après semaine — exercices adaptés, suivi inclus.</p>
+      <ul class="includes">
+        <li>8 semaines de protocole adapté à son profil</li>
+        <li>Vidéos techniques avec de vrais chiens réactifs</li>
+        <li>Journaux de bord pour mesurer les progrès réels</li>
+        <li>Support email avec Morgane inclus</li>
+        <li>Accès à vie</li>
+      </ul>
+      <div class="price-row">
+        <span class="price">59€</span>
+        <span class="price-old">97€</span>
+        <span class="price-label">paiement unique · accès immédiat</span>
+      </div>
+      <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-upsell" id="btnUpsell">Découvrir le programme WoufUp →</a>
+      <p class="guarantee">Satisfait ou remboursé 30 jours — sans justification.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  WoufUp · <a href="https://patteforme.com">patteforme.com</a> ·
+  <a href="/cgv">CGV</a> · <a href="/confidentialite">Confidentialité</a>
+</div>
+
+<script>
+const questions = [
+  {
+    text: "Quand votre chien voit un autre chien au loin, que se passe-t-il ?",
+    hint: null,
+    options: [
+      { letter: "A", label: "Il réagit fort et vite", desc: "Aboiements, grognements, lunges — ça part d'un coup", scores: { reactif: 3, anxieux: 1, frustre: 0 } },
+      { letter: "B", label: "Il se fige ou cherche à fuir", desc: "Corps tendu, oreilles en arrière, essaie de s'éloigner", scores: { reactif: 0, anxieux: 3, frustre: 1 } },
+      { letter: "C", label: "Il tire comme un fou pour aller vers lui", desc: "Il veut absolument rejoindre l'autre chien, peu importe comment", scores: { reactif: 1, anxieux: 0, frustre: 3 } },
+      { letter: "D", label: "Il observe calmement", desc: "Il regarde, reste posé, attend votre signal", scores: { reactif: 0, anxieux: 0, frustre: 0 } }
+    ]
+  },
+  {
+    text: "Comment se passe le retour à la maison après une promenade agitée ?",
+    hint: "La récupération est souvent révélatrice",
+    options: [
+      { letter: "A", label: "Il reste agité longtemps", desc: "Plusieurs heures à tourner, à chercher quelque chose à faire", scores: { reactif: 1, anxieux: 1, frustre: 3 } },
+      { letter: "B", label: "Il s'effondre, épuisé", desc: "Il dort profondément, comme vidé", scores: { reactif: 2, anxieux: 1, frustre: 0 } },
+      { letter: "C", label: "Il reste sur ses gardes", desc: "Il surveille les bruits, se lève pour vérifier", scores: { reactif: 0, anxieux: 3, frustre: 0 } },
+      { letter: "D", label: "Il reprend son rythme normalement", desc: "Pas de différence notable avec un autre jour", scores: { reactif: 0, anxieux: 0, frustre: 0 } }
+    ]
+  },
+  {
+    text: "Dans quel contexte votre chien réagit-il le plus fort ?",
+    hint: null,
+    options: [
+      { letter: "A", label: "Quand il est en laisse", desc: "Libre, il gère mieux. En laisse, c'est une autre histoire", scores: { reactif: 2, anxieux: 2, frustre: 2 } },
+      { letter: "B", label: "Face à des inconnus (humains ou chiens)", desc: "Tout ce qui est nouveau ou imprévisible le met en alerte", scores: { reactif: 1, anxieux: 3, frustre: 0 } },
+      { letter: "C", label: "Quand il est contenu ou empêché", desc: "Vous le tenez, vous le bloquez — ça monte tout de suite", scores: { reactif: 1, anxieux: 0, frustre: 3 } },
+      { letter: "D", label: "Dans les environnements chargés", desc: "Ville, marché, foule — trop d'informations à gérer", scores: { reactif: 3, anxieux: 2, frustre: 0 } }
+    ]
+  },
+  {
+    text: "Comment réagit-il quand vous vous préparez à sortir ?",
+    hint: null,
+    options: [
+      { letter: "A", label: "Excitation incontrôlable", desc: "Saute, tourne, aboie avant même que vous ayez le manteau", scores: { reactif: 1, anxieux: 0, frustre: 3 } },
+      { letter: "B", label: "Anxiété visible", desc: "Halète, colle à vous, vous suit partout", scores: { reactif: 0, anxieux: 3, frustre: 0 } },
+      { letter: "C", label: "Il attend calmement", desc: "Il sait que ça vient, il patiente", scores: { reactif: 0, anxieux: 0, frustre: 0 } },
+      { letter: "D", label: "Ça dépend des jours", desc: "Parfois calme, parfois impossible — pas de logique évidente", scores: { reactif: 2, anxieux: 1, frustre: 1 } }
+    ]
+  },
+  {
+    text: "Est-ce que votre chien se calme si vous lui donnez un os à mâcher ou un Kong ?",
+    hint: "Pas le genre d'activité, mais son effet réel sur son état",
+    options: [
+      { letter: "A", label: "Oui, ça l'occupe vraiment", desc: "Il se pose, il se concentre, il se détend visiblement", scores: { reactif: 0, anxieux: 1, frustre: 3 } },
+      { letter: "B", label: "Oui mais ça ne dure pas", desc: "Il commence, puis abandonne, puis recommence", scores: { reactif: 2, anxieux: 0, frustre: 1 } },
+      { letter: "C", label: "Non, même ça ne l'intéresse pas", desc: "Trop stimulé ou trop stressé pour se concentrer sur la nourriture", scores: { reactif: 3, anxieux: 2, frustre: 0 } },
+      { letter: "D", label: "Il ne s'y intéresse jamais", desc: "Pas motivé par la nourriture dans ces moments-là", scores: { reactif: 1, anxieux: 2, frustre: 0 } }
+    ]
+  },
+  {
+    text: "Quelle phrase décrit le mieux votre quotidien avec lui ?",
+    hint: null,
+    options: [
+      { letter: "A", label: "\"Je dois anticiper chaque sortie\"", desc: "Vous scannez en permanence pour éviter les situations", scores: { reactif: 2, anxieux: 3, frustre: 0 } },
+      { letter: "B", label: "\"Il est épuisant malgré toutes les sorties\"", desc: "Même beaucoup d'exercice ne suffit pas à le calmer", scores: { reactif: 1, anxieux: 0, frustre: 3 } },
+      { letter: "C", label: "\"Je ne sais jamais quand ça va partir\"", desc: "Les réactions arrivent sans signe avant-coureur clair", scores: { reactif: 3, anxieux: 1, frustre: 1 } },
+      { letter: "D", label: "\"Il régresse dès qu'on change de contexte\"", desc: "Ce qui marche à la maison ne marche pas dehors", scores: { reactif: 1, anxieux: 2, frustre: 1 } }
+    ]
+  },
+  {
+    text: "Depuis combien de temps observez-vous ce comportement ?",
+    hint: null,
+    options: [
+      { letter: "A", label: "Depuis tout petit", desc: "C'est son tempérament de base, depuis chiot", scores: { reactif: 2, anxieux: 2, frustre: 1 } },
+      { letter: "B", label: "Après un événement précis", desc: "Accident, agression, déménagement, changement de vie", scores: { reactif: 1, anxieux: 3, frustre: 0 } },
+      { letter: "C", label: "Ça a empiré avec l'âge", desc: "Il était plus calme jeune, les réactions se sont amplifiées", scores: { reactif: 2, anxieux: 0, frustre: 3 } },
+      { letter: "D", label: "Je ne sais pas vraiment", desc: "C'est progressif, difficile à dater", scores: { reactif: 1, anxieux: 1, frustre: 1 } }
+    ]
+  }
+];
+
+const profiles = {
+  reactif: {
+    emoji: '🌋',
+    tag: 'Seuil bas · Réactif',
+    tagClass: 'tag-reactif',
+    title: 'Le chien en seuil bas',
+    teaser: "Son seuil de tolérance est très bas. Ce n'est pas de la méchanceté — c'est son système nerveux qui s'emballe avant même qu'il puisse réfléchir.",
+    fichePath: '/fiche-reactif',
+    resultTitle: 'Votre chien est en seuil bas',
+    resultSub: "Son amygdale s'embrase avant même qu'il puisse traiter l'information. C'est neurologique, pas un problème d'éducation.",
+    ficheCtaTitle: 'Comprendre le chien en seuil bas — votre fiche gratuite'
+  },
+  anxieux: {
+    emoji: '🫨',
+    tag: 'Hypervigilant · Anxieux',
+    tagClass: 'tag-anxieux',
+    title: 'Le chien hypervigilant',
+    teaser: "Son seau de stress déborde en permanence. Il est en mode survie — pas en mode apprentissage. C'est pour ça que les exercices classiques ne fonctionnent pas.",
+    fichePath: '/fiche-anxieux',
+    resultTitle: 'Votre chien est hypervigilant',
+    resultSub: "Son seau de stress est rempli avant même de sortir. Il réagit à tout parce qu'il est déjà à saturation.",
+    ficheCtaTitle: 'Comprendre le chien hypervigilant — votre fiche gratuite'
+  },
+  frustre: {
+    emoji: '💥',
+    tag: 'Déficit de décharge · Frustré',
+    tagClass: 'tag-frustre',
+    title: 'Le chien en déficit de décharge',
+    teaser: "Son circuit dopaminergique tourne à vide. Il cherche une décharge intense et ne sait pas comment la réguler seul. L'exercice seul ne suffit pas — il lui faut du bon exercice.",
+    fichePath: '/fiche-frustre',
+    resultTitle: 'Votre chien est en déficit de décharge',
+    resultSub: "Plus vous le fatiguez physiquement, plus il en redemande. Ce n'est pas de la volonté — c'est son circuit dopaminergique.",
+    ficheCtaTitle: 'Comprendre le chien en déficit de décharge — votre fiche gratuite'
+  }
+};
+
+let currentQ = 0;
+let scores = { reactif: 0, anxieux: 0, frustre: 0 };
+let selectedOption = null;
+
+function getProfile() {
+  const max = Math.max(scores.reactif, scores.anxieux, scores.frustre);
+  if (scores.reactif === max) return 'reactif';
+  if (scores.anxieux === max) return 'anxieux';
+  return 'frustre';
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  const total = questions.length;
+  document.getElementById('progressFill').style.width = ((currentQ / total) * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Question ' + (currentQ + 1) + ' / ' + total;
+  document.getElementById('questionNum').textContent = 'Question ' + (currentQ + 1);
+  document.getElementById('questionText').textContent = q.text;
+  const hint = document.getElementById('questionHint');
+  if (q.hint) { hint.textContent = q.hint; hint.style.display = 'block'; }
+  else { hint.style.display = 'none'; }
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  selectedOption = null;
+  document.getElementById('btnNext').classList.remove('visible');
+  q.options.forEach(function(opt, i) {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = '<div class="option-letter">' + opt.letter + '</div><div class="option-text"><span class="option-label">' + opt.label + '</span><span class="option-desc">' + opt.desc + '</span></div>';
+    btn.onclick = function() { selectOption(i, btn); };
+    container.appendChild(btn);
+  });
+  const card = document.getElementById('quizScreen');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = '';
+}
+
+function selectOption(index, el) {
+  document.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  selectedOption = index;
+  document.getElementById('btnNext').classList.add('visible');
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  const opt = questions[currentQ].options[selectedOption];
+  scores.reactif += opt.scores.reactif;
+  scores.anxieux += opt.scores.anxieux;
+  scores.frustre += opt.scores.frustre;
+  currentQ++;
+  if (currentQ < questions.length) {
+    renderQuestion();
+  } else {
+    showEmailScreen();
+  }
+}
+
+function showEmailScreen() {
+  const p = getProfile();
+  const prof = profiles[p];
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressLabel').textContent = 'Diagnostic terminé';
+  document.getElementById('profileEmoji').textContent = prof.emoji;
+  document.getElementById('profileTag').textContent = prof.tag;
+  document.getElementById('profileTag').className = 'profile-tag ' + prof.tagClass;
+  document.getElementById('profileTitle').textContent = prof.title;
+  document.getElementById('profileTeaser').textContent = prof.teaser;
+  document.getElementById('quizScreen').classList.add('hidden');
+  document.getElementById('emailScreen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitEmail(e) {
+  e.preventDefault();
+  const firstName = document.getElementById('firstName').value.trim();
+  const email = document.getElementById('emailInput').value.trim();
+  if (!firstName || !email) return;
+  const p = getProfile();
+  const prof = profiles[p];
+  const btn = document.getElementById('btnEmail');
+  btn.textContent = 'Ouverture de votre fiche…';
+  btn.disabled = true;
+  try {
+    sessionStorage.setItem('wup_profile', p);
+    sessionStorage.setItem('wup_name', firstName);
+    sessionStorage.setItem('wup_email', email);
+  } catch(err) {}
+  setTimeout(function() {
+    window.location.href = prof.fichePath + '?prenom=' + encodeURIComponent(firstName);
+  }, 600);
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

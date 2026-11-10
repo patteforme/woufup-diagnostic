@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WoufUp — Le programme comportemental pour chiens difficiles</title>
+<meta name="description" content="Un programme en 8 semaines adapté au profil neurologique de votre chien. Pas un guide générique — un protocole personnalisé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap">
+<style>
+:root {
+  --navy: #00284F;
+  --sky: #7FC4F7;
+  --yellow: #F4BD45;
+  --orange: #FF6C22;
+  --cream: #F4F2ED;
+  --white: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', sans-serif; background: #fff; color: var(--text); }
+
+/* NAV */
+.nav { background: var(--navy); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.3rem; font-weight: 900; color: var(--white); text-decoration: none; }
+.logo span { color: var(--sky); }
+.nav-cta { background: var(--orange); color: var(--white); font-size: .82rem; font-weight: 800; padding: 8px 18px; border-radius: 20px; text-decoration: none; white-space: nowrap; transition: background .2s; }
+.nav-cta:hover { background: #e55a12; }
+
+/* HERO */
+.hero { background: linear-gradient(160deg, var(--navy) 0%, #003d75 60%, #004d8f 100%); color: var(--white); padding: 72px 24px 60px; text-align: center; }
+.hero-note { display: inline-block; background: rgba(127,196,247,.15); border: 1px solid rgba(127,196,247,.25); color: var(--sky); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 7px 16px; border-radius: 20px; margin-bottom: 24px; }
+.hero h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+.hero h1 em { font-style: normal; color: var(--sky); }
+.hero-sub { font-size: 1.1rem; color: rgba(255,255,255,.75); max-width: 520px; margin: 0 auto 36px; line-height: 1.65; }
+.hero-price-block { display: inline-block; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 20px 32px; margin-bottom: 28px; }
+.hero-price-row { display: flex; align-items: baseline; gap: 10px; justify-content: center; margin-bottom: 4px; }
+.hero-price { font-size: 2.4rem; font-weight: 900; }
+.hero-price-old { font-size: 1.1rem; color: rgba(255,255,255,.35); text-decoration: line-through; }
+.hero-price-note { font-size: .78rem; color: rgba(255,255,255,.45); }
+.btn-hero { display: inline-block; background: var(--orange); color: var(--white); border-radius: 14px; padding: 18px 40px; text-decoration: none; font-weight: 800; font-size: 1.05rem; transition: background .2s, transform .1s; margin-bottom: 12px; }
+.btn-hero:hover { background: #e55a12; }
+.btn-hero:active { transform: scale(.98); }
+.hero-guarantee { font-size: .82rem; color: rgba(255,255,255,.45); }
+
+/* PROOF BAR */
+.proof-bar { background: var(--cream); padding: 20px 24px; display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #e8e4da; }
+.proof-item { font-size: .85rem; color: #555; display: flex; align-items: center; gap: 7px; font-weight: 700; }
+.proof-item span { color: var(--navy); font-weight: 800; }
+
+/* SECTION WRAPPER */
+.section { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+.section-label { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.section h2 { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 900; color: var(--navy); line-height: 1.25; margin-bottom: 20px; }
+.section p { font-size: .97rem; color: #444; line-height: 1.7; margin-bottom: 16px; }
+
+/* PROBLEM SECTION */
+.problem-bg { background: #f8f9fa; }
+.problem-items { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+.problem-item { background: var(--white); border-radius: 12px; padding: 18px 20px; border-left: 4px solid #e8ecf0; display: flex; gap: 14px; align-items: flex-start; }
+.problem-item.active { border-left-color: var(--orange); }
+.problem-icon { font-size: 1.3rem; flex-shrink: 0; }
+.problem-item p { margin: 0; font-size: .93rem; color: #333; line-height: 1.55; font-weight: 700; }
+.problem-item span { font-size: .85rem; color: var(--muted); font-weight: 400; display: block; margin-top: 3px; }
+
+/* WHY DIFFERENT */
+.diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: 14px; overflow: hidden; margin-top: 24px; }
+.diff-col { padding: 20px; }
+.diff-col.old { background: #fff0ee; }
+.diff-col.new { background: #eef4ff; }
+.diff-col-label { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+.diff-col.old .diff-col-label { color: #c0392b; }
+.diff-col.new .diff-col-label { color: var(--navy); }
+.diff-items { display: flex; flex-direction: column; gap: 8px; }
+.diff-item { font-size: .88rem; color: #333; line-height: 1.5; display: flex; gap: 8px; }
+.diff-item::before { flex-shrink: 0; font-weight: 900; }
+.diff-col.old .diff-item::before { content: '✕'; color: #c0392b; }
+.diff-col.new .diff-item::before { content: '✓'; color: var(--navy); }
+@media (max-width: 520px) { .diff-grid { grid-template-columns: 1fr; } }
+
+/* PROGRAM */
+.program-bg { background: var(--navy); color: var(--white); }
+.program-bg .section-label { color: var(--sky); }
+.program-bg h2 { color: var(--white); }
+.program-weeks { display: flex; flex-direction: column; gap: 2px; margin-top: 28px; }
+.week { background: rgba(255,255,255,.05); border-radius: 10px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgba(255,255,255,.07); }
+.week-num { flex-shrink: 0; font-size: .72rem; font-weight: 800; letter-spacing: .08em; color: var(--sky); text-transform: uppercase; min-width: 60px; padding-top: 2px; }
+.week-body h3 { font-size: .95rem; font-weight: 800; color: var(--white); margin-bottom: 3px; }
+.week-body p { font-size: .84rem; color: rgba(255,255,255,.55); line-height: 1.5; margin: 0; }
+
+/* WHAT'S INCLUDED */
+.includes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.include-card { background: var(--cream); border-radius: 14px; padding: 20px; }
+.include-icon { font-size: 1.4rem; margin-bottom: 10px; }
+.include-card h3 { font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+.include-card p { font-size: .84rem; color: var(--muted); line-height: 1.5; margin: 0; }
+@media (max-width: 520px) { .includes-grid { grid-template-columns: 1fr; } }
+
+/* TESTIMONIAL */
+.testimonial-bg { background: #f0f4f8; }
+.testimonial { background: var(--white); border-radius: 16px; padding: 28px; border-left: 4px solid var(--navy); margin-top: 20px; }
+.testimonial-text { font-size: 1rem; color: #333; line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+.testimonial-author { font-size: .85rem; font-weight: 700; color: var(--navy); }
+.testimonial-dog { font-size: .82rem; color: var(--muted); font-weight: 400; }
+
+/* MO SECTION */
+.mo-section { background: var(--cream); }
+.mo-content { display: flex; gap: 32px; align-items: flex-start; }
+.mo-text h2 { font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-bottom: 16px; }
+.mo-text p { font-size: .95rem; color: #444; line-height: 1.7; margin-bottom: 14px; }
+.mo-sig { font-size: .92rem; font-weight: 800; color: var(--navy); font-style: italic; }
+@media (max-width: 600px) { .mo-content { flex-direction: column; } }
+
+/* CTA FINAL */
+.cta-final { background: linear-gradient(135deg, var(--navy) 0%, #003d75 100%); color: var(--white); text-align: center; padding: 72px 24px; }
+.cta-final h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 900; margin-bottom: 14px; line-height: 1.2; max-width: 560px; margin-left: auto; margin-right: auto; }
+.cta-final > p { font-size: 1rem; color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 36px; line-height: 1.65; }
+.cta-box { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 36px; max-width: 480px; margin: 0 auto; }
+.includes-final { list-style: none; text-align: left; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+.includes-final li { font-size: .9rem; color: rgba(255,255,255,.85); display: flex; gap: 10px; }
+.includes-final li::before { content: '✓'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
+.price-final-row { display: flex; align-items: baseline; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+.price-final { font-size: 2.6rem; font-weight: 900; }
+.price-final-old { font-size: 1.2rem; color: rgba(255,255,255,.3); text-decoration: line-through; }
+.price-final-note { font-size: .78rem; color: rgba(255,255,255,.4); }
+.btn-final { display: block; background: var(--orange); color: var(--white); border-radius: 14px; padding: 18px 24px; text-decoration: none; font-weight: 800; font-size: 1.05rem; text-align: center; transition: background .2s, transform .1s; margin-bottom: 12px; }
+.btn-final:hover { background: #e55a12; }
+.btn-final:active { transform: scale(.98); }
+.cta-guarantee { font-size: .78rem; color: rgba(255,255,255,.4); }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid #e8ecf0; padding: 20px 0; }
+.faq-q { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-q::after { content: '+'; font-size: 1.3rem; font-weight: 400; color: var(--muted); flex-shrink: 0; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { font-size: .92rem; color: #444; line-height: 1.65; display: none; }
+.faq-item.open .faq-a { display: block; }
+
+.footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 24px; font-size: .78rem; }
+.footer a { color: rgba(255,255,255,.4); text-decoration: none; }
+.footer a:hover { color: rgba(255,255,255,.7); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="logo">Wouf<span>Up</span></a>
+  <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="nav-cta">Accéder au programme →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-note">Programme comportemental · 8 semaines</div>
+  <h1>Votre chien n'est pas <em>difficile</em>.<br>Il est mal compris.</h1>
+  <p class="hero-sub">WoufUp est un programme en 8 semaines construit autour du profil neurologique de votre chien. Pas un guide générique — un protocole qui part de ce qu'il est vraiment.</p>
+  <div class="hero-price-block">
+    <div class="hero-price-row">
+      <span class="hero-price">59€</span>
+      <span class="hero-price-old">97€</span>
+    </div>
+    <div class="hero-price-note">paiement unique · accès immédiat · offre de lancement</div>
+  </div>
+  <br>
+  <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-hero">Accéder au programme maintenant →</a>
+  <p class="hero-guarantee">Satisfait ou remboursé 30 jours — sans justification.</p>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item"><span>3 profils</span> neurologiques différents</div>
+  <div class="proof-item"><span>8 semaines</span> de protocole adapté</div>
+  <div class="proof-item"><span>Accès à vie</span> au contenu</div>
+  <div class="proof-item">Support email <span>inclus</span></div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem-bg">
+<div class="section">
+  <div class="section-label">Le problème</div>
+  <h2>Vous avez probablement déjà essayé des choses qui n'ont pas marché.</h2>
+  <p>Pas parce que vous avez mal fait. Parce que les conseils classiques ignorent ce qui rend votre chien différent — son profil neurologique.</p>
+  <div class="problem-items">
+    <div class="problem-item active">
+      <span class="problem-icon">📚</span>
+      <p>"Les guides génériques" <span>Plein de bons conseils — aucun adapté à ce que vous voyez tous les jours.</span></p>
+    </div>
+    <div class="problem-item active">
+      <span class="problem-icon">🏃</span>
+      <p>"Plus d'exercice" <span>Vous le sortez deux heures par jour. Il est toujours aussi intense en rentrant.</span></p>
+    </div>
+    <div class="problem-item active">
+      <span class="problem-icon">🎓</span>
+      <p>"Les cours de groupe" <span>Trop de stimulations, trop peu de personnalisation. Votre chien régresse dès qu'on change de contexte.</span></p>
+    </div>
+    <div class="problem-item active">
+      <span class="problem-icon">⏳</span>
+      <p>"Attendre qu'il grandisse" <span>Ça fait deux ans. Sans travail ciblé, les circuits neuronaux se renforcent.</span></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- WHY DIFFERENT -->
+<div class="section">
+  <div class="section-label">La différence</div>
+  <h2>Un protocole qui part du profil de votre chien — pas du comportement visible.</h2>
+  <p>La plupart des approches travaillent sur les comportements (les aboiements, les lunges, les grognements). WoufUp travaille sur la cause — le mécanisme neurologique qui les produit.</p>
+  <div class="diff-grid">
+    <div class="diff-col old">
+      <div class="diff-col-label">Approche classique</div>
+      <div class="diff-items">
+        <div class="diff-item">Travaille sur le comportement visible</div>
+        <div class="diff-item">Mêmes exercices pour tous les chiens</div>
+        <div class="diff-item">Corrections dans le moment</div>
+        <div class="diff-item">Résultats qui ne tiennent pas</div>
+      </div>
+    </div>
+    <div class="diff-col new">
+      <div class="diff-col-label">WoufUp</div>
+      <div class="diff-items">
+        <div class="diff-item">Travaille sur le mécanisme neurologique</div>
+        <div class="diff-item">Protocole adapté au profil de votre chien</div>
+        <div class="diff-item">Travail en dessous du seuil de réaction</div>
+        <div class="diff-item">Changements qui s'installent dans la durée</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<div class="program-bg">
+<div class="section">
+  <div class="section-label">Le programme</div>
+  <h2>8 semaines. Une progression claire.</h2>
+  <div class="program-weeks">
+    <div class="week"><span class="week-num">S1–S2</span><div class="week-body"><h3>Comprendre son profil en profondeur</h3><p>Les mécanismes neurologiques, les déclencheurs réels, et comment les identifier chez votre chien spécifiquement.</p></div></div>
+    <div class="week"><span class="week-num">S3–S4</span><div class="week-body"><h3>Réduire la charge de base</h3><p>Réorganiser le quotidien pour diminuer le niveau de stress chronique — avant même de travailler sur les réactions.</p></div></div>
+    <div class="week"><span class="week-num">S5–S6</span><div class="week-body"><h3>Travailler sous le seuil</h3><p>Protocoles de désensibilisation et contre-conditionnement adaptés au profil — vidéos techniques avec de vrais chiens.</p></div></div>
+    <div class="week"><span class="week-num">S7–S8</span><div class="week-body"><h3>Généraliser et ancrer</h3><p>Étendre ce qui marche à différents contextes. Outils pour maintenir les progrès sur le long terme.</p></div></div>
+  </div>
+</div>
+</div>
+
+<!-- INCLUDES -->
+<div class="section">
+  <div class="section-label">Ce que vous recevez</div>
+  <h2>Tout ce dont vous avez besoin. Rien de superflu.</h2>
+  <div class="includes-grid">
+    <div class="include-card">
+      <div class="include-icon">🎥</div>
+      <h3>Vidéos techniques</h3>
+      <p>Chaque exercice démontré avec de vrais chiens réactifs — pas des chiens parfaitement éduqués.</p>
+    </div>
+    <div class="include-card">
+      <div class="include-icon">📋</div>
+      <h3>Journaux de bord</h3>
+      <p>Des outils pour observer les vrais progrès — pas juste une impression que ça va mieux.</p>
+    </div>
+    <div class="include-card">
+      <div class="include-icon">📬</div>
+      <h3>Support email avec Morgane</h3>
+      <p>Vous êtes bloqué sur quelque chose ? Vous écrivez, j'réponds. Inclus dans le programme.</p>
+    </div>
+    <div class="include-card">
+      <div class="include-icon">♾️</div>
+      <h3>Accès à vie</h3>
+      <p>Pas d'abonnement. Le programme est à vous. Vous revenez quand vous en avez besoin.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-bg">
+<div class="section">
+  <div class="section-label">Témoignage</div>
+  <h2>Un exemple concret.</h2>
+  <div class="testimonial">
+    <p class="testimonial-text">"J'avais tout essayé — les cours de groupe, les séances individuelles, les livres. Chaque fois, ça marchait deux semaines puis Diesel repartait de zéro dès qu'on changeait d'environnement. Ce qui a changé avec WoufUp, c'est que j'ai enfin compris pourquoi il réagissait — pas juste comment faire pour qu'il réagisse moins sur le moment. La semaine 3 a été un tournant. J'ai arrêté de travailler sur les réactions et commencé à travailler sur ce qui les causait. Quatre mois plus tard, on fait des promenades que je n'aurais même pas imaginées avant."</p>
+    <div class="testimonial-author">Sophie M.</div>
+    <div class="testimonial-dog">Diesel, Malinois 4 ans · profil seuil bas</div>
+  </div>
+</div>
+</div>
+
+<!-- MO -->
+<div class="mo-section">
+<div class="section">
+  <div class="mo-content">
+    <div class="mo-text">
+      <div class="section-label">Qui je suis</div>
+      <h2>Bonjour, je suis Morgane.</h2>
+      <p>Je suis éducatrice comportementaliste canine, basée à Marseille. J'accompagne des propriétaires de chiens difficiles depuis plusieurs années — pas avec des méthodes coercitives, pas avec des formules toutes faites.</p>
+      <p>WoufUp est né d'une frustration : je voyais trop de chiens étiquetés "agressifs" ou "irrécupérables" parce que personne n'avait cherché à comprendre ce qui se passait vraiment dans leur cerveau. Ces chiens ne sont pas cassés. Ils ont un profil. Et ce profil, on peut travailler avec.</p>
+      <p>Ce programme, c'est ce que je fais en consultation — mis en forme pour que vous puissiez avancer à votre rythme, avec votre chien, dans votre quotidien.</p>
+      <div class="mo-sig">— Morgane, WoufUp</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Votre chien mérite un programme fait pour lui.</h2>
+  <p>Pas un guide de plus. Un protocole qui part de ce qu'il est — et de ce que vous vivez vraiment.</p>
+  <div class="cta-box">
+    <ul class="includes-final">
+      <li>8 semaines de protocole adapté au profil</li>
+      <li>Vidéos techniques avec de vrais chiens</li>
+      <li>Journaux de bord inclus</li>
+      <li>Support email avec Morgane</li>
+      <li>Accès à vie</li>
+    </ul>
+    <div class="price-final-row">
+      <span class="price-final">59€</span>
+      <span class="price-final-old">97€</span>
+    </div>
+    <div class="price-final-note" style="margin-bottom:20px">paiement unique · accès immédiat · offre de lancement</div>
+    <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-final">Accéder au programme WoufUp →</a>
+    <p class="cta-guarantee">Satisfait ou remboursé 30 jours — sans justification ni question.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="section">
+  <div class="section-label">Questions fréquentes</div>
+  <h2>Ce qu'on me demande souvent.</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Mon chien a 7 ans. Est-ce qu'il est trop vieux pour changer ?</div>
+    <div class="faq-a">Non. Le cerveau des chiens reste plastique bien au-delà de 2 ans. Les changements peuvent prendre un peu plus de temps chez un chien plus âgé dont les circuits sont bien ancrés — mais ils ont lieu. J'ai travaillé avec des chiens de 10 ans qui ont fait des progrès significatifs.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Je n'ai pas beaucoup de temps. Est-ce que ça demande des heures par jour ?</div>
+    <div class="faq-a">Les séances de travail dans le programme durent entre 5 et 15 minutes. Ce qui compte, c'est la régularité et la précision — pas la durée. La majorité du travail consiste à réorganiser des choses que vous faites déjà (les promenades, les repas, les moments à la maison).</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Mon chien a plusieurs profils à la fois. Est-ce que ça marche quand même ?</div>
+    <div class="faq-a">La plupart des chiens ont un profil dominant et des traits secondaires. Le diagnostic vous indique le profil principal — c'est celui sur lequel on travaille en priorité. Les principes du programme s'appliquent de toute façon à l'ensemble des mécanismes sous-jacents.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Comment fonctionne la garantie ?</div>
+    <div class="faq-a">Si vous avez suivi le programme les 4 premières semaines et que vous ne voyez aucun changement, vous m'écrivez et je vous rembourse. Pas de formulaire compliqué, pas de justification à fournir. Je fais confiance aux gens qui font confiance à mon travail.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">La différence avec une consultation individuelle ?</div>
+    <div class="faq-a">Une consultation individuelle est personnalisée en temps réel — je vois votre chien, j'adapte sur le moment. Le programme, c'est l'ensemble des outils et protocoles que j'utilise en consultation, structurés pour que vous puissiez les suivre seuls. Pour les cas très complexes ou avec une composante d'agressivité importante, une consultation individuelle reste ce que je recommande en premier.</div>
+  </div>
+</div>
+
+<div class="footer">
+  WoufUp · <a href="https://patteforme.com">patteforme.com</a> ·
+  <a href="/cgv">CGV</a> · <a href="/confidentialite">Confidentialité</a>
+</div>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// Personnalisation hero selon profil
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const profil = params.get('profil');
+  if (!profil) return;
+  const notes = {
+    reactif: 'Votre chien est en seuil bas — ce programme est construit pour ce profil.',
+    anxieux: 'Votre chien est hypervigilant — ce programme est construit pour ce profil.',
+    frustre: 'Votre chien est en déficit de décharge — ce programme est construit pour ce profil.'
+  };
+  if (notes[profil]) {
+    const note = document.querySelector('.hero-note');
+    if (note) note.textContent = notes[profil];
+  }
+})();
+</script>
+</body>
+</html>
