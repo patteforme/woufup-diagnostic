@@ -3,261 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WoufUp – Guide comportemental personnalisé</title>
+<title>WoufUp – Votre guide comportemental personnalisé</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#00284F;--navy2:#003a6e;--gold:#F4BD45;--orange:#FF6C22;--sky:#7FC4F7;--white:#fff;--muted:rgba(255,255,255,.58);--card:rgba(255,255,255,.055);--border:rgba(255,255,255,.09)}
+:root{--navy:#00284F;--sky:#7FC4F7;--gold:#F4BD45;--orange:#FF6C22;--cream:#F4F2ED;--white:#FFFFFF;--navy-light:#1a3a63;--text-soft:rgba(0,40,79,.62);--border:rgba(0,40,79,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased}
-
-.nav{background:rgba(0,28,55,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:1.05rem;color:var(--gold);text-decoration:none}
-.nav-cta{background:var(--gold);color:var(--navy);border:none;border-radius:7px;padding:9px 20px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.82rem;cursor:pointer;text-decoration:none}
-
-.hero{padding:64px 24px 56px;text-align:center;max-width:680px;margin:0 auto}
-.hero-label{display:inline-block;background:rgba(244,189,69,.12);color:var(--gold);border:1px solid rgba(244,189,69,.28);border-radius:5px;font-weight:900;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px;margin-bottom:22px}
-.hero h1{font-size:clamp(1.75rem,5.5vw,2.6rem);font-weight:900;line-height:1.13;margin-bottom:16px;letter-spacing:-.02em}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto 36px;line-height:1.65}
-.hero-cta{display:inline-block;background:var(--gold);color:var(--navy);border:none;border-radius:9px;padding:17px 44px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;cursor:pointer;text-decoration:none;box-shadow:0 6px 28px rgba(244,189,69,.32);transition:transform .15s,box-shadow .2s}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(244,189,69,.44)}
-.hero-reassure{font-size:.75rem;color:rgba(255,255,255,.3);margin-top:12px;display:block}
-.hero-price{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:.88rem;font-weight:800;color:rgba(255,255,255,.5)}
-.hero-price strong{color:var(--white);font-size:1.1rem}
-
-.proof-bar{background:rgba(255,255,255,.035);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 24px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
-.proof-item{text-align:center}
-.proof-num{font-size:1.3rem;font-weight:900;color:var(--gold);letter-spacing:-.01em}
-.proof-label{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
-
-.section{max-width:680px;margin:0 auto;padding:52px 24px}
-.tag{font-size:.68rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px}
-.section h2{font-size:clamp(1.3rem,4vw,1.85rem);font-weight:900;line-height:1.22;margin-bottom:20px;letter-spacing:-.02em}
-.section h2 em{font-style:normal;color:var(--gold)}
-.section>p{color:var(--muted);line-height:1.72;font-size:.96rem}
-
-.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
-.pain-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:12px;padding:18px 16px}
-.pain-card strong{font-size:.9rem;font-weight:900;display:block;margin-bottom:5px}
-.pain-card p{font-size:.8rem;color:var(--muted);line-height:1.5}
-
-.why-blocks{display:flex;flex-direction:column;gap:11px;margin-top:26px}
-.why-block{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
-.why-num{width:32px;height:32px;border-radius:8px;background:rgba(244,189,69,.14);border:1px solid rgba(244,189,69,.25);color:var(--gold);font-weight:900;font-size:.78rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.why-block h4{font-size:.93rem;font-weight:900;margin-bottom:5px}
-.why-block p{font-size:.82rem;color:var(--muted);line-height:1.5}
-
-.includes{display:flex;flex-direction:column;gap:9px;margin-top:26px}
-.inc{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:15px 18px;display:flex;gap:12px;align-items:flex-start}
-.inc-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
-.inc h4{font-size:.91rem;font-weight:900;margin-bottom:4px}
-.inc p{font-size:.8rem;color:var(--muted);line-height:1.5}
-
-.price-box{background:rgba(244,189,69,.07);border:1px solid rgba(244,189,69,.2);border-radius:14px;padding:26px 24px;margin-top:28px;text-align:center}
-.price-label{font-size:.68rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
-.price-amount{font-size:2.6rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:6px}
-.price-amount span{font-size:1.1rem;vertical-align:super;margin-right:2px}
-.price-sub{font-size:.8rem;color:var(--muted);margin-bottom:20px}
-.price-cta{display:block;background:var(--gold);color:var(--navy);border:none;border-radius:9px;padding:16px 36px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;cursor:pointer;text-decoration:none;box-shadow:0 6px 28px rgba(244,189,69,.32);transition:transform .15s,box-shadow .2s;text-align:center}
-.price-cta:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(244,189,69,.44)}
-.price-reassure{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:.72rem;color:rgba(255,255,255,.3);font-weight:700}
-
-.reviews{display:flex;flex-direction:column;gap:13px;margin-top:26px}
-.review{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
-.stars{color:var(--gold);font-size:.82rem;margin-bottom:11px;letter-spacing:3px}
-.review-text{font-size:.89rem;line-height:1.65;font-style:italic;margin-bottom:14px;color:rgba(255,255,255,.88)}
-.review-author{display:flex;align-items:center;gap:10px}
-.avatar{width:34px;height:34px;border-radius:50%;background:rgba(244,189,69,.14);border:1px solid rgba(244,189,69,.35);color:var(--gold);font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.rname{font-size:.84rem;font-weight:900}
-.rdog{font-size:.73rem;color:var(--muted);margin-top:1px}
-
-.faq{display:flex;flex-direction:column;gap:8px;margin-top:24px}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:11px;overflow:hidden}
-.faq-q{padding:16px 20px;font-size:.9rem;font-weight:800;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.faq-q::after{content:'+';font-size:1.2rem;font-weight:900;color:var(--gold);flex-shrink:0;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{display:none;padding:0 20px 16px;font-size:.85rem;color:var(--muted);line-height:1.6}
-.faq-item.open .faq-a{display:block}
-
-.cta-section{background:linear-gradient(160deg,#002f5a 0%,#001830 100%);border-top:1px solid var(--border);padding:64px 24px;text-align:center}
-.cta-inner{max-width:560px;margin:0 auto}
-.expert-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:11px 18px;margin-bottom:32px;font-size:.8rem;color:var(--muted);text-align:left}
-.expert-badge strong{color:rgba(255,255,255,.9)}
-.cta-section h2{font-size:clamp(1.5rem,4.5vw,2.1rem);font-weight:900;line-height:1.18;margin-bottom:14px;letter-spacing:-.02em}
-.cta-section h2 em{font-style:normal;color:var(--gold)}
-.cta-section>div>p{color:var(--muted);font-size:.95rem;line-height:1.68;margin-bottom:16px}
-.cta-price{font-size:1.8rem;font-weight:900;color:var(--white);margin-bottom:24px}
-.cta-price span{font-size:.9rem;color:var(--muted);font-weight:700;margin-left:4px}
-.cta-btn{display:block;width:100%;background:var(--gold);color:var(--navy);border:none;border-radius:11px;padding:19px 40px;font-family:'Nunito',sans-serif;font-weight:900;font-size:1.05rem;cursor:pointer;text-decoration:none;text-align:center;box-shadow:0 6px 36px rgba(244,189,69,.38);transition:transform .15s,box-shadow .2s}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 44px rgba(244,189,69,.52)}
-.reassure{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:.73rem;color:rgba(255,255,255,.3);font-weight:700}
-
-footer{background:rgba(0,0,0,.2);border-top:1px solid var(--border);padding:24px 20px;text-align:center;font-size:.75rem;color:rgba(255,255,255,.25)}
-
-@media(max-width:460px){
-  .pain-grid{grid-template-columns:1fr}
-}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;-webkit-font-smoothing:antialiased}
+nav.main-nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center}
+.nav-inner{max-width:720px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-tagline{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase}
+.btn-cta{display:inline-block;background:var(--orange);color:var(--white);border:none;border-radius:50px;padding:16px 36px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(255,108,34,.3);text-align:center;width:100%;max-width:400px}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,108,34,.45)}
+.btn-navy{background:var(--navy);box-shadow:0 4px 20px rgba(0,40,79,.2)}
+.btn-navy:hover{box-shadow:0 8px 28px rgba(0,40,79,.35)}
+</style>
+<style>
+.vente-hero{background:var(--navy);padding:60px 24px 48px;text-align:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(244,189,69,.15);border:1px solid rgba(244,189,69,.3);border-radius:50px;padding:6px 16px;font-size:.72rem;font-weight:900;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:22px}
+.vente-hero h1{font-size:clamp(1.75rem,5.5vw,2.5rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:14px}
+.vente-hero h1 em{color:var(--gold);font-style:normal}
+.vente-hero p{color:rgba(255,255,255,.65);max-width:500px;margin:0 auto 28px;line-height:1.65;font-size:.97rem}
+.price-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:9px 22px;font-weight:900;font-size:1.1rem;color:var(--white);margin-top:4px}
+.price-pill em{color:var(--gold);font-style:normal;font-size:1.3rem}
+.section{max-width:680px;margin:0 auto;padding:48px 20px}
+.sec-title{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;color:var(--navy);text-align:center;margin-bottom:12px}
+.sec-sub{font-size:.92rem;color:var(--text-soft);text-align:center;line-height:1.65;margin-bottom:32px}
+.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
+@media(max-width:480px){.guide-grid{grid-template-columns:1fr}}
+.guide-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 18px;box-shadow:0 2px 10px rgba(0,40,79,.05)}
+.guide-icon{font-size:1.4rem;margin-bottom:10px}
+.guide-card h3{font-size:.92rem;font-weight:900;color:var(--navy);margin-bottom:5px}
+.guide-card p{font-size:.8rem;color:var(--text-soft);line-height:1.5}
+.what-inside{background:var(--navy);border-radius:20px;padding:36px 28px;margin-bottom:16px}
+.what-inside h3{font-size:1.1rem;font-weight:900;color:var(--white);margin-bottom:16px;text-align:center}
+.inside-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.08)}
+.inside-num{width:28px;height:28px;border-radius:50%;background:rgba(244,189,69,.15);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;color:var(--gold);flex-shrink:0}
+.inside-info h4{font-size:.88rem;font-weight:900;color:var(--white);margin-bottom:2px}
+.inside-info p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.4}
+.price-box{background:var(--white);border:2px solid var(--border);border-radius:20px;padding:36px 32px;text-align:center;box-shadow:0 4px 24px rgba(0,40,79,.08)}
+.price-badge{display:inline-block;background:var(--gold);color:var(--navy);font-weight:900;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;padding:5px 16px;border-radius:50px;margin-bottom:18px}
+.price-box h2{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;color:var(--navy);margin-bottom:6px;line-height:1.2}
+.price-amount{font-size:3.2rem;font-weight:900;color:var(--navy);display:block;margin:14px 0 4px;line-height:1}
+.price-desc{font-size:.82rem;color:var(--text-soft);margin-bottom:24px}
+.price-guarantee{font-size:.75rem;color:var(--text-soft);margin-top:14px;font-weight:700}
+.testimonials{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.testi{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px}
+.stars{color:var(--gold);margin-bottom:6px;font-size:.9rem}
+.testi-txt{font-size:.85rem;font-style:italic;color:var(--navy);line-height:1.6;margin-bottom:8px}
+.testi-auth{font-size:.75rem;font-weight:800;color:var(--text-soft)}
+.author-section{background:rgba(0,40,79,.04);border:1px solid var(--border);border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px;margin-bottom:32px}
+.author-ava{width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:900;color:var(--navy);flex-shrink:0}
+.author-info h4{font-size:.95rem;font-weight:900;color:var(--navy);margin-bottom:4px}
+.author-info p{font-size:.82rem;color:var(--text-soft);line-height:1.5}
 </style>
 </head>
 <body>
-
-<nav class="nav">
-  <a class="logo" href="/">WoufUp</a>
-  <a class="nav-cta" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank">Obtenir mon Guide →</a>
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="/" style="text-decoration:none"><img src="/logo.png" alt="WoufUp" style="height:40px;width:auto"></a>
+    <span class="nav-tagline">Par Morgane Besse · Éducatrice canine</span>
+  </div>
 </nav>
-
-<section class="hero">
-  <div class="hero-label">Guide personnalisé</div>
-  <h1 id="h1">Le Guide comportemental<br>de <em id="dname">ton chien</em></h1>
-  <p class="hero-sub" id="hero-sub">Un bilan basé sur ses réponses exactes au diagnostic, et un plan structuré semaine par semaine — avec les bons exercices dans le bon ordre.</p>
-  <a class="hero-cta" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank" id="hero-cta-btn">Obtenir le Guide personnalisé →</a>
-  <div class="hero-price"><strong>59€</strong> · accès immédiat · satisfait ou remboursé 30 jours</div>
-</section>
-
-<div class="proof-bar">
-  <div class="proof-item"><div class="proof-num">+400</div><div class="proof-label">chiens accompagnés</div></div>
-  <div class="proof-item"><div class="proof-num">5 ★</div><div class="proof-label">note moyenne</div></div>
-  <div class="proof-item"><div class="proof-num">Semaine 1</div><div class="proof-label">premiers changements</div></div>
-  <div class="proof-item"><div class="proof-num">30 j</div><div class="proof-label">satisfait ou remboursé</div></div>
+<div class="vente-hero">
+  <div class="hero-eyebrow">Votre guide est prêt</div>
+  <h1 id="h1">Le plan comportemental<br>personnalisé de <em>votre chien</em></h1>
+  <p>Basé sur votre diagnostic, voici un programme complet de 40 pages conçu par une éducatrice comportementaliste canine — exercices, analyses et planning semaine après semaine.</p>
+  <div class="price-pill">Guide personnalisé · <em>59€</em></div>
 </div>
-
-<section class="section">
-  <div class="tag">Le problème</div>
-  <h2>Tu te reconnais dans<br><em>au moins une</em> de ces situations ?</h2>
-  <div class="pain-grid">
-    <div class="pain-card"><strong>Les promenades sont stressantes</strong><p>Chaque sortie devient une épreuve — tu anticipes les réactions, tu évites certains endroits.</p></div>
-    <div class="pain-card"><strong>Tu as déjà essayé</strong><p>YouTube, cours collectifs, conseils d'amis — rien n'a vraiment tenu dans la durée.</p></div>
-    <div class="pain-card"><strong>Tu ne comprends pas pourquoi</strong><p>Il est doux à la maison, mais dehors ou dans certaines situations, il devient incontrôlable.</p></div>
-    <div class="pain-card"><strong>Tu te sens seul·e face à ça</strong><p>Les gens jugent, les conseils génériques ne marchent pas pour ton chien précis.</p></div>
+<div class="section">
+  <div class="sec-title">Ce que contient votre guide</div>
+  <div class="sec-sub">Un programme de 40 pages, 100% adapté au profil identifié lors de votre diagnostic.</div>
+  <div class="guide-grid">
+    <div class="guide-card"><div class="guide-icon">🧠</div><h3>Analyse comportementale</h3><p>Les mécanismes derrière les comportements de <span id="dname">votre chien</span>, expliqués simplement.</p></div>
+    <div class="guide-card"><div class="guide-icon">📅</div><h3>Planning 4 semaines</h3><p>Un programme pédagogique et ludique, semaine par semaine, avec des objectifs clairs.</p></div>
+    <div class="guide-card"><div class="guide-icon">🎯</div><h3>Exercices concrets</h3><p>Des protocoles étape par étape que vous pouvez appliquer dès aujourd'hui, chez vous.</p></div>
+    <div class="guide-card"><div class="guide-icon">📖</div><h3>Lire ses signaux</h3><p>Comprendre le langage corporel de votre chien pour anticiper et prévenir les comportements.</p></div>
   </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="tag">Pourquoi ça marche</div>
-  <h2>Ce n'est pas un guide générique.<br>C'est <em id="why-name">ton chien</em>.</h2>
-  <p>Le guide est construit à partir de ses réponses exactes au diagnostic. Chaque profil a ses déclencheurs, ses mécanismes, son rythme d'apprentissage — et son plan.</p>
-  <div class="why-blocks">
-    <div class="why-block"><div class="why-num">01</div><div><h4>Un bilan comportemental précis</h4><p>Pas une description générale — une analyse appliquée à ses réponses, qui nomme ce qui se passe et pourquoi.</p></div></div>
-    <div class="why-block"><div class="why-num">02</div><div><h4>Un plan semaine par semaine</h4><p>Des étapes dans le bon ordre, avec les critères pour savoir quand passer à la suite — pas juste une liste d'exercices.</p></div></div>
-    <div class="why-block"><div class="why-num">03</div><div><h4>Des exercices concrets dès le premier jour</h4><p>Pas de théorie creuse. Des protocoles progressifs que tu peux mettre en place immédiatement.</p></div></div>
+  <div class="what-inside">
+    <h3>Semaine par semaine dans votre guide</h3>
+    <div class="inside-row"><div class="inside-num">S1</div><div class="inside-info"><h4>Comprendre &amp; observer</h4><p>Analyse du profil, identification des déclencheurs, premières bases.</p></div></div>
+    <div class="inside-row"><div class="inside-num">S2</div><div class="inside-info"><h4>Premiers exercices</h4><p>Protocoles adaptés au profil, 15 min par jour. Résultats dès la 1ère semaine.</p></div></div>
+    <div class="inside-row"><div class="inside-num">S3</div><div class="inside-info"><h4>Mise en situation réelle</h4><p>Appliquer les acquis en promenade et dans les situations du quotidien.</p></div></div>
+    <div class="inside-row"><div class="inside-num">S4</div><div class="inside-info"><h4>Ancrer les changements</h4><p>Routines durables, bilan et prochaines étapes selon l'évolution.</p></div></div>
   </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="tag">Ce que tu reçois</div>
-  <h2>Tout ce qu'il faut pour<br><em>vraiment changer les choses</em></h2>
-  <div class="includes">
-    <div class="inc"><div class="inc-dot"></div><div><h4>Bilan comportemental personnalisé</h4><p>Analyse du profil identifié au diagnostic — ses déclencheurs, ce qui empire, ce qui aide déjà</p></div></div>
-    <div class="inc"><div class="inc-dot"></div><div><h4>Comprendre le mécanisme</h4><p>L'explication précise de ce qui se passe dans son cerveau — pour lire ses signaux et intervenir au bon moment</p></div></div>
-    <div class="inc"><div class="inc-dot"></div><div><h4>Plan semaine par semaine</h4><p>Étapes progressives avec critères de passage — pour avancer sans rechute</p></div></div>
-    <div class="inc"><div class="inc-dot"></div><div><h4>Exercices adaptés au profil</h4><p>Protocoles spécifiques à son type comportemental — décompression, gestion des réactions, travail sous seuil</p></div></div>
-    <div class="inc"><div class="inc-dot"></div><div><h4>Accès immédiat après paiement</h4><p>Format numérique · lisible sur téléphone, tablette ou ordinateur</p></div></div>
+  <div class="author-section">
+    <div class="author-ava">M</div>
+    <div class="author-info">
+      <h4>Morgane Besse · Éducatrice comportementaliste canine</h4>
+      <p>5 ans d'expérience · 400+ chiens accompagnés · Basée à Marseille. Ce guide est le fruit de mon expertise terrain — pas de conseils génériques, un programme pensé pour votre chien.</p>
+    </div>
+  </div>
+  <div class="sec-title">Ce que disent les maîtres</div>
+  <div class="testimonials">
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-txt">"En deux semaines, Milo a arrêté d'aboyer à chaque passant. Le guide a vraiment cerné son profil et proposé des exercices adaptés."</p><div class="testi-auth">Sophie L. · Border Collie 2 ans</div></div>
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-txt">"Je n'y croyais pas trop au début. Mais le diagnostic correspondait exactement à ce que je vivais avec Nala, et le plan était actionnable dès le premier jour."</p><div class="testi-auth">Thomas B. · Berger Malinois</div></div>
+    <div class="testi"><div class="stars">★★★★★</div><p class="testi-txt">"Enfin un programme qui ne répète pas les mêmes généralités qu'on trouve partout. Luna a évolué semaine après semaine, c'est bluffant."</p><div class="testi-auth">Marie-Claire D. · Labrador</div></div>
   </div>
   <div class="price-box">
-    <div class="price-label">Prix du guide personnalisé</div>
-    <div class="price-amount"><span>€</span>59</div>
-    <div class="price-sub">Paiement unique · accès à vie · satisfait ou remboursé 30 jours</div>
-    <a class="price-cta" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank" id="price-cta-btn">J'obtiens mon Guide →</a>
-    <div class="price-reassure">
-      <span>Paiement sécurisé</span>
-      <span>Accès à vie</span>
-      <span>Remboursé si pas satisfait</span>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="tag">Témoignages</div>
-  <h2><em>+400 chiens accompagnés</em><br>par la même méthode</h2>
-  <div class="reviews">
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">« En deux semaines, les promenades sont redevenues agréables. J'aurais dû le faire bien plus tôt — le fait que ce soit basé sur SON profil précis a tout changé. »</p>
-      <div class="review-author"><div class="avatar">S</div><div><div class="rname">Sophie R.</div><div class="rdog">Thor, Malinois 3 ans</div></div></div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">« Ce qui m'a aidé c'est de comprendre le mécanisme — avant j'essayais de corriger au mauvais moment. Maintenant je travaille avant que ça parte, et ça tient. »</p>
-      <div class="review-author"><div class="avatar">M</div><div><div class="rname">Marc T.</div><div class="rdog">Rex, Berger Allemand 4 ans</div></div></div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p class="review-text">« J'avais peur que ce soit trop tard vu son âge. Le plan progressif a quand même fonctionné — les sorties sont redevenues sereines. Je regrette de ne pas l'avoir fait avant. »</p>
-      <div class="review-author"><div class="avatar">I</div><div><div class="rname">Isabelle L.</div><div class="rdog">Niko, Husky 6 ans</div></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="tag">Questions fréquentes</div>
-  <h2>Tout ce que tu veux savoir</h2>
-  <div class="faq">
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">C'est vraiment personnalisé à mon chien ?</div>
-      <div class="faq-a">Oui. Le guide est généré à partir des réponses au diagnostic — pas un PDF identique pour tout le monde. Le profil identifié détermine le contenu du bilan, les exercices recommandés et l'ordre des étapes.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Ça fonctionne même si mon chien est vieux ou très réactif ?</div>
-      <div class="faq-a">Oui. Le plan progressif est conçu pour fonctionner par paliers — le point de départ s'adapte à son niveau actuel, pas à un niveau idéal. Des chiens de plus de 8 ans ont eu des résultats significatifs.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Et si ça ne fonctionne pas pour nous ?</div>
-      <div class="faq-a">Satisfait ou remboursé 30 jours, sans condition. Si le guide ne t'a pas aidé, tu envoies un email et tu es remboursé·e intégralement.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">J'ai besoin de matériel spécial ?</div>
-      <div class="faq-a">Non. Les exercices se font avec ce que tu as déjà — une laisse, des friandises, du temps. Aucun équipement spécifique n'est requis.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Combien de temps par jour ça demande ?</div>
-      <div class="faq-a">Les séances sont courtes — 5 à 15 minutes, 1 à 2 fois par jour. La régularité compte plus que la durée. Les premiers changements arrivent généralement dès la semaine 1.</div>
-    </div>
-  </div>
-</section>
-
-<div class="cta-section">
-  <div class="cta-inner">
-    <div class="expert-badge">
-      <span>Conçu par une <strong>éducatrice comportementaliste canine certifiée</strong> · <strong>+400 chiens accompagnés</strong> · <strong>5 étoiles de note moyenne</strong></span>
-    </div>
-    <div class="tag" style="text-align:center;margin-bottom:16px">Prêt·e à passer à l'action ?</div>
-    <h2>Le Guide personnalisé<br>de <em id="cta-name">ton chien</em></h2>
-    <p id="cta-sub">Un bilan comportemental · un plan semaine par semaine · des exercices concrets à mettre en place dès le premier jour.</p>
-    <div class="cta-price">59€ <span>· paiement unique · accès à vie</span></div>
-    <a class="cta-btn" href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" target="_blank" id="cta-btn">J'obtiens mon Guide →</a>
-    <div class="reassure">
-      <span>Paiement sécurisé</span>
-      <span>Accès immédiat</span>
-      <span>Remboursé si pas satisfait</span>
-    </div>
+    <div class="price-badge">Offre unique · Votre profil</div>
+    <h2>Guide comportemental<br>de <span id="why-name">votre chien</span></h2>
+    <span class="price-amount">59€</span>
+    <p class="price-desc">Accès immédiat · PDF 40+ pages · Valable à vie</p>
+    <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-cta" id="price-cta-btn" style="display:inline-block;width:auto">Obtenir mon guide personnalisé</a>
+    <p class="price-guarantee">Satisfait ou remboursé sous 14 jours · Paiement sécurisé</p>
   </div>
 </div>
-
-<footer>
-  WoufUp · Diagnostic comportemental canin · <a href="/">Retour au diagnostic</a>
-</footer>
-
 <script>
 (function(){
-  let name = null;
-  try{ name = sessionStorage.getItem('woufup_name'); }catch(e){}
-  if(name && name !== 'ton chien'){
-    const cap = name.charAt(0).toUpperCase() + name.slice(1);
-    const h1 = document.getElementById('h1');
-    if(h1) h1.innerHTML = 'Le Guide comportemental<br>de <em>' + cap + '</em>';
-    const dname = document.getElementById('dname');
-    if(dname) dname.textContent = cap;
-    const whyName = document.getElementById('why-name');
-    if(whyName) whyName.textContent = cap;
-    const ctaName = document.getElementById('cta-name');
-    if(ctaName) ctaName.textContent = cap;
-    const heroBtn = document.getElementById('hero-cta-btn');
-    if(heroBtn) heroBtn.textContent = 'Obtenir le Guide de ' + cap + ' →';
-    const priceBtn = document.getElementById('price-cta-btn');
-    if(priceBtn) priceBtn.textContent = 'J\'obtiens le Guide de ' + cap + ' →';
-    const ctaBtn = document.getElementById('cta-btn');
-    if(ctaBtn) ctaBtn.textContent = 'J\'obtiens le Guide de ' + cap + ' →';
+  var name=null;try{name=sessionStorage.getItem('woufup_name');}catch(e){}
+  if(name&&name.length>1&&name!=='ton chien'){
+    var cap=name.charAt(0).toUpperCase()+name.slice(1);
+    var h1=document.getElementById('h1');
+    if(h1)h1.innerHTML='Le plan comportemental<br>personnalisé de <em>'+cap+'</em>';
+    ['dname','why-name'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=cap;});
+    var pb=document.getElementById('price-cta-btn');if(pb)pb.textContent='Obtenir le guide de '+cap;
   }
 })();
 </script>
