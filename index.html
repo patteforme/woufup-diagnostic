@@ -18,6 +18,7 @@ nav.main-nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 
 .btn-navy:hover{box-shadow:0 8px 28px rgba(0,40,79,.35)}
 .author-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:8px 16px;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.8)}
 .author-avatar{width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;color:var(--navy);flex-shrink:0}
+.author-avatar-icon{width:32px;height:32px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;color:var(--navy);flex-shrink:0}
 </style>
 <style>
 .hero{background:var(--navy);padding:64px 24px 52px;text-align:center}
@@ -69,17 +70,19 @@ nav.main-nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 
 <nav class="main-nav">
   <div class="nav-inner">
     <a href="/" style="text-decoration:none"><img src="/logo.png" alt="WoufUp" style="height:40px;width:auto"></a>
-    <span class="nav-tagline">Par Morgane Besse · Éducatrice canine</span>
+    <span class="nav-tagline">Par Morgane · Éducatrice comportementaliste</span>
   </div>
 </nav>
 <div class="hero">
   <div class="hero-eyebrow">Diagnostic comportemental gratuit</div>
   <h1>Comprendre le comportement<br>de <em>votre chien</em> en 2 minutes</h1>
-  <p class="hero-sub">Un diagnostic personnalisé basé sur 7 questions, créé par une éducatrice comportementaliste canine avec 5 ans d'expérience et 400+ chiens accompagnés.</p>
-  <div style="text-align:center">
+  <p class="hero-sub">7 questions. Un profil comportemental précis.<br>Créé par une éducatrice avec 5 ans d'expérience et 400+ chiens accompagnés.</p>
+  <div style="text-align:center;margin-bottom:28px">
     <div class="author-badge">
-      <div class="author-avatar">M</div>
-      <span>Morgane Besse · Éducatrice comportementaliste canine · 5 ans · 400+ chiens</span>
+      <div class="author-avatar-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5C6.07 1.5 4.5 3.07 4.5 5s1.57 3.5 3.5 3.5S11.5 6.93 11.5 5 9.93 1.5 8 1.5zm0 8.5C5.33 10 2 11.34 2 13v1h12v-1c0-1.66-3.33-3-6-3z" fill="currentColor"/></svg>
+      </div>
+      <span>Morgane · Éducatrice comportementaliste canine · 5 ans · 400+ chiens</span>
     </div>
   </div>
   <div class="trust-row">
@@ -181,7 +184,7 @@ nav.main-nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 
       <div class="q-text">Quel est le comportement qui vous pose le plus de problème au quotidien ?</div>
       <div class="opts">
         <button class="opt" data-q="5" data-v="r">Les aboiements et les réactions disproportionnées</button>
-        <button class="opt" data-q="5" data-v="a">L'anxiété, les destructions ou la dépendance extréme</button>
+        <button class="opt" data-q="5" data-v="a">L'anxiété, les destructions ou la dépendance extrême</button>
         <button class="opt" data-q="5" data-v="f">L'hyperactivité, l'impulsivité et le manque d'écoute</button>
         <button class="opt" data-q="5" data-v="n">Quelques ajustements mineurs seulement</button>
       </div>
@@ -277,8 +280,8 @@ function submitEmail(){
     sessionStorage.setItem('woufup_scores',JSON.stringify(scores));
     var profile=scores.r>=scores.a&&scores.r>=scores.f?'reactif':(scores.a>=scores.f?'anxieux':'frustre');
     sessionStorage.setItem('woufup_profile',profile);
-    window.location.href='/fiche-'+profil+'.html';
-  }catch (e){window.location.href='/fiche-reactif.html';}
+    window.location.href='/fiche-'+profile+'.html';
+  }catch(e){window.location.href='/fiche-reactif.html';}
 }
 </script>
 </body>
