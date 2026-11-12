@@ -3,125 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WoufUp – Profil Frustré · Votre diagnostic personnalisé</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<title>WoufUp — Profil Frustré</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#00284F;--sky:#7FC4F7;--gold:#F4BD45;--orange:#FF6C22;--cream:#F4F2ED;--white:#FFFFFF;--navy-light:#1a3a63;--text-soft:rgba(0,40,79,.62);--border:rgba(0,40,79,.12)}
+:root{--navy:#00284F;--sky:#7FC4F7;--gold:#F4BD45;--orange:#FF6C22;--cream:#F4F2ED;--white:#FFFFFF;--text-soft:rgba(0,40,79,.55);--border:rgba(0,40,79,.10);--accent:#F4BD45;--accent-dark:#c99a10;--accent-bg:rgba(244,189,69,.07);--accent-border:rgba(244,189,69,.22)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--navy);min-height:100vh;-webkit-font-smoothing:antialiased}
-nav.main-nav{background:var(--cream);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center}
-.nav-inner{max-width:720px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
-.nav-tagline{font-size:.7rem;font-weight:700;color:var(--text-soft);letter-spacing:.08em;text-transform:uppercase}
-.btn-cta{display:inline-block;background:var(--orange);color:var(--white);border:none;border-radius:50px;padding:16px 36px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(255,108,34,.3);text-align:center}
-.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,108,34,.45)}
-.btn-navy{background:var(--navy);box-shadow:0 4px 20px rgba(0,40,79,.2)}
-.btn-navy:hover{box-shadow:0 8px 28px rgba(0,40,79,.35)}
-</style>
-<style>
-:root{--accent:#F4BD45}
-.fiche-hero{background:var(--navy);padding:60px 24px 48px;text-align:center}
-.profile-label{display:inline-block;border-radius:50px;font-weight:900;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:5px 16px;margin-bottom:20px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.18)}
-.fiche-hero h1{font-size:clamp(1.75rem,5.5vw,2.5rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:14px}
-.fiche-hero h1 em{color:var(--accent);font-style:normal}
-.fiche-hero p{color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 28px;line-height:1.65;font-size:.97rem}
-.author-mini{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.45);margin-top:4px}
-.section{max-width:680px;margin:0 auto;padding:48px 20px}
-.sec-label{font-size:.68rem;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.sec-title{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;color:var(--navy);margin-bottom:12px;line-height:1.25}
-.sec-sub{font-size:.92rem;color:var(--text-soft);line-height:1.65;margin-bottom:28px}
-.profile-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px 22px;box-shadow:0 2px 12px rgba(0,40,79,.05);margin-bottom:20px;font-size:.93rem;color:var(--navy);line-height:1.7}
-.profile-card strong{color:var(--navy);font-weight:900}
-.signs-list{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
-.sign-item{background:rgba(255,108,34,.05);border:1px solid rgba(255,108,34,.12);border-radius:12px;padding:14px 18px;font-size:.88rem;font-weight:700;color:var(--navy);display:flex;align-items:flex-start;gap:10px}
-.sign-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:5px}
-.plan-teaser{background:var(--navy);border-radius:20px;padding:36px 28px;margin-bottom:16px}
-.plan-teaser h3{font-size:1.1rem;font-weight:900;color:var(--white);margin-bottom:8px}
-.plan-teaser p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:20px}
-.week-row{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-top:1px solid rgba(255,255,255,.08)}
-.week-num{width:36px;height:36px;border-radius:50%;background:rgba(244,189,69,.15);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;color:var(--accent);flex-shrink:0}
-.week-info h4{font-size:.88rem;font-weight:900;color:var(--white);margin-bottom:3px}
-.week-info p{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.4}
-.cta-box{background:linear-gradient(135deg,var(--gold) 0%,var(--orange) 100%);border-radius:20px;padding:44px 32px;text-align:center}
-.cta-box h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:900;color:var(--navy);margin-bottom:10px;line-height:1.2}
-.cta-box p{font-size:.9rem;color:rgba(0,40,79,.75);margin-bottom:28px;line-height:1.6}
-.price-line{font-size:.85rem;font-weight:800;color:rgba(0,40,79,.6);margin-top:12px}
-.cd{display:flex;justify-content:center;gap:12px;margin:16px 0}
-.cd-block{text-align:center;background:rgba(0,40,79,.12);border-radius:10px;padding:8px 12px;min-width:52px}
-.cd-num{font-size:1.6rem;font-weight:900;color:var(--navy);display:block;line-height:1}
-.cd-lbl{font-size:.6rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:rgba(0,40,79,.5)}
-.testimonials{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
-.testi{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px}
-.stars{color:var(--gold);margin-bottom:6px;font-size:.9rem}
-.testi-txt{font-size:.85rem;font-style:italic;color:var(--navy);line-height:1.6;margin-bottom:8px}
-.testi-auth{font-size:.75rem;font-weight:800;color:var(--text-soft)}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--navy);-webkit-font-smoothing:antialiased}
+
+nav{background:var(--cream);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:60px;display:flex;align-items:center;padding:0 24px}
+.nav-in{max-width:760px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-sig{font-size:.68rem;font-weight:700;color:var(--text-soft);letter-spacing:.1em;text-transform:uppercase}
+
+.hero{background:var(--navy);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(244,189,69,.07) 0%,transparent 70%);pointer-events:none}
+.profile-tag{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:4px 12px;font-size:.62rem;font-weight:800;color:rgba(255,255,255,.5);letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+.profile-tag span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:4px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-line{width:40px;height:3px;background:var(--accent);margin:16px auto 20px;border-radius:2px}
+.hero-desc{font-size:.97rem;color:rgba(255,255,255,.6);max-width:460px;margin:0 auto 28px;line-height:1.75}
+.hero-sig{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase}
+
+.wrap{max-width:700px;margin:0 auto;padding:52px 20px 80px}
+
+.intro-block{border-left:3px solid var(--accent);padding:0 0 0 20px;margin-bottom:44px}
+.intro-block p{font-size:1.05rem;color:var(--navy);line-height:1.8;font-weight:600}
+.intro-block p + p{margin-top:12px}
+
+.sh{margin-bottom:20px}
+.sh-eyebrow{font-size:.62rem;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+.sh-title{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3.5vw,1.75rem);font-weight:700;color:var(--navy);line-height:1.2}
+
+.signals{display:flex;flex-direction:column;gap:1px;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:48px}
+.sig-row{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;background:var(--white);border-bottom:1px solid var(--border);font-size:.9rem;color:var(--navy);line-height:1.5;font-weight:600}
+.sig-row:last-child{border-bottom:none}
+.sig-icon{width:28px;height:28px;border-radius:6px;background:var(--accent-bg);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.sig-icon svg{width:13px;height:13px;fill:var(--accent-dark)}
+
+.plan-block{background:var(--navy);border-radius:16px;overflow:hidden;margin-bottom:48px}
+.plan-head{padding:28px 28px 20px;border-bottom:1px solid rgba(255,255,255,.07)}
+.plan-head-eyebrow{font-size:.6rem;font-weight:800;color:rgba(244,189,69,.8);text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px}
+.plan-head-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);line-height:1.25;margin-bottom:10px}
+.plan-head-sub{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.6}
+.plan-week{display:flex;gap:16px;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.06)}
+.plan-week:last-child{border-bottom:none}
+.pw-num{font-size:.62rem;font-weight:900;color:rgba(244,189,69,.7);text-transform:uppercase;letter-spacing:.1em;min-width:28px;padding-top:2px}
+.pw-body h4{font-size:.9rem;font-weight:900;color:var(--white);margin-bottom:4px}
+.pw-body p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.5}
+.pw-body .pw-ex{font-size:.78rem;color:rgba(244,189,69,.65);font-weight:700;margin-top:5px}
+
+.morgane-note{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:48px;display:flex;gap:16px;align-items:flex-start}
+.mn-icon{width:36px;height:36px;border-radius:50%;background:rgba(0,40,79,.06);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mn-icon svg{width:16px;height:16px;fill:var(--navy)}
+.mn-txt{font-size:.85rem;color:var(--navy);line-height:1.65}
+.mn-txt strong{font-weight:900}
+.mn-sig{font-size:.72rem;font-weight:700;color:var(--text-soft);margin-top:6px}
+
+.cta-wrap{background:var(--navy);border-radius:16px;padding:40px 32px;text-align:center}
+.cta-eyebrow{font-size:.62rem;font-weight:900;color:rgba(244,189,69,.8);text-transform:uppercase;letter-spacing:.14em;margin-bottom:14px}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,4vw,1.9rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:12px}
+.cta-title em{color:var(--accent);font-style:normal}
+.cta-sub{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
+.cta-what{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 20px;margin-bottom:24px;text-align:left;display:flex;flex-direction:column;gap:9px}
+.cta-item{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.4;font-weight:600}
+.cta-check{width:16px;height:16px;border-radius:4px;background:rgba(244,189,69,.18);border:1px solid rgba(244,189,69,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.cta-check svg{width:9px;height:9px}
+.btn-buy{display:inline-block;background:var(--accent);color:var(--navy);border:none;border-radius:8px;padding:16px 32px;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;cursor:pointer;text-decoration:none;width:100%;transition:all .2s;letter-spacing:.01em}
+.btn-buy:hover{background:#e6b030;transform:translateY(-1px)}
+.cta-guaranty{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:12px;font-weight:700;letter-spacing:.02em}
+
+.urgency{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px}
+.urgency-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.urgency-txt{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
 </style>
 </head>
 <body>
-<nav class="main-nav">
-  <div class="nav-inner">
-    <a href="/" style="text-decoration:none"><img src="/logo.png" alt="WoufUp" style="height:40px;width:auto"></a>
-    <span class="nav-tagline">Par Morgane Besse · Éducatrice canine</span>
+<nav>
+  <div class="nav-in">
+    <a href="/" style="text-decoration:none"><img src="/logo.png" alt="WoufUp" style="height:38px;width:auto"></a>
+    <span class="nav-sig">Par Morgane B. · Éducatrice comportementaliste</span>
   </div>
 </nav>
-<div class="fiche-hero">
-  <div class="profile-label">Votre diagnostic · Profil identifié</div>
+
+<div class="hero">
+  <div class="profile-tag"><span></span>Résultat de votre diagnostic</div>
   <h1 id="h1">Votre chien est <em>Frustré</em></h1>
-  <p id="hero-sub">Votre chien déborde d'énergie et veut tout, tout de suite. Ce n'est pas un défaut — c'est un profil qui a besoin d'un cadre clair et d'exercices d'autocontrôle.</p>
-  <div class="author-mini">Morgane Besse · Éducatrice comportementaliste canine · 5 ans · 400+ chiens</div>
+  <div class="hero-line"></div>
+  <p class="hero-desc">La frustration mal gérée déborde. Ce profil a besoin de deux choses précises : une dépense mentale réelle et des limites claires. Pas de punition — de la structure.</p>
+  <div class="hero-sig">Morgane B. · Éducatrice comportementaliste canine · 5 ans terrain · 400+ chiens</div>
 </div>
-<div class="section">
-  <div class="sec-label">Comprendre ce profil</div>
-  <div class="sec-title">Ce que cela veut dire concrètement</div>
-  <div class="profile-card">Le chien frustré a une <strong>tolérance basse à l'attente</strong> et une forte impulsivité. Il réagit avant de penser. Ce n'est pas du mauvais vouloir — c'est son câblage. Les bons exercices d'autocontrôle et la dépense mentale adaptée peuvent transformer ce profil en chien équilibré et attentif en quelques semaines.</div>
-  <div class="sec-label" style="margin-top:28px">Signaux reconnaissables</div>
-  <div class="sec-title">Les comportements typiques de ce profil</div>
-  <div class="signs-list">
-    <div class="sign-item"><div class="sign-dot"></div><div>Tire en permanence en laisse et est difficile à contrôler</div></div><div class="sign-item"><div class="sign-dot"></div><div>Saute sur les gens sans pouvoir s'arrêter</div></div><div class="sign-item"><div class="sign-dot"></div><div>Hyperactif au retour des promenades ou lors des moments d'excitation</div></div><div class="sign-item"><div class="sign-dot"></div><div>Distrait par tout, difficile à maintenir attentif</div></div><div class="sign-item"><div class="sign-dot"></div><div>Aboie, grogne ou s'agite quand il n'obtient pas ce qu'il veut</div></div>
+
+<div class="wrap">
+
+  <div class="intro-block">
+    <p>Le chien frustré n'est pas un mauvais chien. C'est souvent un chien très intelligent, avec beaucoup d'énergie cognitive — et pas assez d'occasions de la dépenser. Résultat : il teste les limites, insiste, et déborde.</p>
+    <p>Ce profil répond très bien au travail quand on combine dépense mentale quotidienne et apprentissage de l'autocontrôle. Ces deux leviers changent tout en quelques semaines.</p>
   </div>
-  <div class="plan-teaser">
-    <h3>Votre plan personnalisé sur 4 semaines</h3>
-    <p>Le programme complet alterne exercices d'autocontrôle, dépense mentale efficace et techniques de marche — semaine après semaine, à votre rythme.</p>
-    <div class="week-row"><div class="week-num">S1</div><div class="week-info"><h4>Comprendre l'impulsivité</h4><p>Exercises de bases d'autocontrôle. Apprendre à « stop avant d'agir ».</p></div></div><div class="week-row"><div class="week-num">S2</div><div class="week-info"><h4>Dépense mentale ciblée</h4><p>Activités qui canalisent l'énergie plus efficacement que la dépense physique seule.</p></div></div><div class="week-row"><div class="week-num">S3</div><div class="week-info"><h4>Marche en laisse sans traction</h4><p>Techniques progressives pour des promenades agréables.</p></div></div><div class="week-row"><div class="week-num">S4</div><div class="week-info"><h4>Installer des rituels de calme</h4><p>Moments de décompression dans la routine quotidienne.</p></div></div>
+
+  <div class="sh">
+    <div class="sh-eyebrow">Ce que j'observe</div>
+    <div class="sh-title">Les comportements typiques de ce profil</div>
   </div>
-  <div class="sec-label" style="margin-top:40px">Témoignages</div>
-  <div class="testimonials">
-    <div class="testi"><div class="stars">★★★★★</div><p class="testi-txt">"Le diagnostic a parfaitement cerné le profil de Milo. En 3 semaines, nos promenades ont changé du tout au tout."</p><div class="testi-auth">Sophie L. · Border Collie 2 ans</div></div>
-    <div class="testi"><div class="stars">★★★★★</div><p class="testi-txt">"Enfin un programme qui ne donne pas des conseils génériques. Tout est adapté à Luna, semaine par semaine."</p><div class="testi-auth">Thomas B. · Berger Malinois</div></div>
+  <div class="signals">
+    <div class="sig-row"><div class="sig-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg></div><div>Tire fort en laisse, saute sur les gens, ne tient pas en place — pas de mauvaise intention, mais aucune inhibition</div></div>
+    <div class="sig-row"><div class="sig-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg></div><div>Rapporte sans lâcher, insiste pour jouer, re-sollicite sans arrêt même quand vous ignorez — la frustration monte vite</div></div>
+    <div class="sig-row"><div class="sig-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg></div><div>Mâche, gratte, détruit — souvent par ennui ou par débordement d'énergie non canalisée</div></div>
+    <div class="sig-row"><div class="sig-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg></div><div>Obéit bien en séance calme à la maison, mais complètement différent dès qu'il y a de la stimulation autour</div></div>
+    <div class="sig-row"><div class="sig-icon"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg></div><div>Vocalise ou s'agite quand quelque chose lui est refusé — il n'a pas appris à tolérer la frustration sans réagir</div></div>
   </div>
-  <div class="cta-box">
-    <h2 id="cta-h2">Obtenir le plan complet<br>de votre chien</h2>
-    <p>Un guide de 40+ pages avec exercices, analyses comportementales et planning semaine par semaine — 100% adapté au profil de <span id="cta-name">votre chien</span>.</p>
-    <div class="cd">
-      <div class="cd-block"><span class="cd-num" id="cd-h">23</span><span class="cd-lbl">heures</span></div>
-      <div class="cd-block"><span class="cd-num" id="cd-m">59</span><span class="cd-lbl">min</span></div>
-      <div class="cd-block"><span class="cd-num" id="cd-s">59</span><span class="cd-lbl">sec</span></div>
+
+  <div class="sh">
+    <div class="sh-eyebrow">Votre programme · 4 semaines</div>
+    <div class="sh-title">Ce que contient votre guide personnalisé</div>
+  </div>
+  <div class="plan-block">
+    <div class="plan-head">
+      <div class="plan-head-eyebrow">Rédigé pour ce profil spécifique</div>
+      <div class="plan-head-title">Un programme structuré semaine par semaine — pensé pour le chien frustré</div>
+      <div class="plan-head-sub">Ce n'est pas un guide générique. Chaque exercice cible l'autocontrôle et la dépense cognitive, dans un ordre progressif qui donne des résultats rapides et durables.</div>
     </div>
-    <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-cta" id="cta-btn">Obtenir mon guide personnalisé — 59€</a>
-    <div class="price-line">Accès immédiat · PDF 40 pages · Satisfait ou remboursé 14 jours</div>
+    <div class="plan-week">
+      <div class="pw-num">S 1</div>
+      <div class="pw-body">
+        <h4>Introduire la dépense mentale quotidienne</h4>
+        <p>Un chien frustré est souvent sous-stimulé mentalement — même s'il se dépense beaucoup physiquement. On installe une routine de jeux de recherche et de stimulation cognitive, 10 minutes par jour.</p>
+        <div class="pw-ex">→ Jeux de flair · gamelles d'enrichissement · recherche de friandises</div>
+      </div>
+    </div>
+    <div class="plan-week">
+      <div class="pw-num">S 2</div>
+      <div class="pw-body">
+        <h4>Travailler l'autocontrôle sur base simple</h4>
+        <p>Exercices d'attente, de relâchement sur signal, d'inhibition de l'impulsion. Ces exercices sont courts mais intenses — ils travaillent le cerveau, pas les muscles.</p>
+        <div class="pw-ex">→ Leave it progressif · assis-attend · jeu stop-départ</div>
+      </div>
+    </div>
+    <div class="plan-week">
+      <div class="pw-num">S 3</div>
+      <div class="pw-body">
+        <h4>Transférer en situation réelle</h4>
+        <p>On applique les acquis de semaine 2 en contexte de stimulation : croisements, arrivée d'inconnus, jouets. C'est là que ça se joue vraiment — et que les maîtres abandonnent si on ne les prépare pas.</p>
+        <div class="pw-ex">→ Exercices de distraction progressive · scénarios du quotidien</div>
+      </div>
+    </div>
+    <div class="plan-week">
+      <div class="pw-num">S 4</div>
+      <div class="pw-body">
+        <h4>Ancrer la routine et évaluer</h4>
+        <p>Mise en place d'une routine hebdomadaire durable, grille d'évaluation pour mesurer l'autocontrôle réel, et les signaux qui montrent que le chien commence vraiment à se réguler.</p>
+        <div class="pw-ex">→ Routine hebdomadaire · indicateurs de progrès · ajustements</div>
+      </div>
+    </div>
   </div>
+
+  <div class="morgane-note">
+    <div class="mn-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+    <div>
+      <div class="mn-txt"><strong>Un mot de Morgane B.</strong> — Les chiens frustrés progressent très vite — ce sont souvent mes élèves les plus motivants à travailler. Mais beaucoup de propriétaires se concentrent trop sur l'exercice physique alors que c'est la dépense cognitive qui fait la différence. Les 10 minutes de stimulation mentale de semaine 1 changent l'ambiance à la maison en quelques jours. Je le vois à chaque fois.</div>
+      <div class="mn-sig">Morgane B. · Éducatrice comportementaliste canine · Marseille</div>
+    </div>
+  </div>
+
+  <div class="cta-wrap">
+    <div class="cta-eyebrow">Guide personnalisé · Profil frustré</div>
+    <div class="cta-title" id="cta-h2">Le programme complet<br>pour <em id="cta-name">votre chien</em></div>
+    <div class="cta-sub">Un PDF de 40+ pages rédigé spécifiquement pour le profil frustré. Exercices, protocoles, plannings et grilles d'évaluation — prêt à utiliser dès réception.</div>
+    <div class="cta-what">
+      <div class="cta-item"><div class="cta-check"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#F4BD45" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><div>Programme semaine par semaine adapté au profil frustré — pas au chien générique</div></div>
+      <div class="cta-item"><div class="cta-check"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#F4BD45" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><div>Exercices de dépense cognitive que j'utilise systématiquement avec ce profil en consultation</div></div>
+      <div class="cta-item"><div class="cta-check"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#F4BD45" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><div>Routine hebdomadaire prête à l'emploi — plus besoin de chercher quoi faire chaque jour</div></div>
+      <div class="cta-item"><div class="cta-check"><svg viewBox="0 0 10 10"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="#F4BD45" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div><div>Accès immédiat · PDF téléchargeable · Remboursé si pas adapté à votre chien</div></div>
+    </div>
+    <div class="urgency">
+      <div class="urgency-dot"></div>
+      <div class="urgency-txt">Accès disponible maintenant</div>
+    </div>
+    <a href="https://www.woufup.fr/obtenirmoncarnetdebordpersonnalise" class="btn-buy" id="cta-btn">Obtenir le programme — 59 €</a>
+    <div class="cta-guaranty">Accès immédiat après paiement · PDF 40+ pages · Satisfait ou remboursé 14 jours</div>
+  </div>
+
 </div>
 <script>
 (function(){
   var name=null;try{name=sessionStorage.getItem('woufup_name');}catch(e){}
   if(name&&name.length>1&&name!=='ton chien'){
     var cap=name.charAt(0).toUpperCase()+name.slice(1);
-    var h=document.getElementById('h1');if(h)h.innerHTML=cap+' est <em>Frustré</em>';
-    var cn=document.getElementById('cta-name');if(cn)cn.textContent=cap;
-    var ch=document.getElementById('cta-h2');if(ch)ch.innerHTML='Obtenir le plan complet<br>de '+cap;
-    var cb=document.getElementById('cta-btn');if(cb)cb.textContent='Obtenir le guide de '+cap+' — 59€';
+    var h=document.getElementById('h1');
+    if(h)h.innerHTML=cap+' est <em>Frustré</em>';
+    var cn=document.getElementById('cta-name');
+    if(cn)cn.textContent=cap;
+    var cb=document.getElementById('cta-btn');
+    if(cb)cb.textContent='Obtenir le programme de '+cap+' — 59 €';
   }
-  var end;try{end=parseInt(localStorage.getItem('woufup_cd_frustre'))||0;}catch(e){end=0;}
-  if(!end||end<Date.now()){end=Date.now()+23*3600000+59*60000+59000;try{localStorage.setItem('woufup_cd_frustre',end);}catch(e){}}
-  function tick(){
-    var d=Math.max(0,end-Date.now());
-    var h=Math.floor(d/3600000),m=Math.floor((d%3600000)/60000),s=Math.floor((d%60000)/1000);
-    var hEl=document.getElementById('cd-h'),mEl=document.getElementById('cd-m'),sEl=document.getElementById('cd-s');
-    if(hEl)hEl.textContent=String(h).padStart(2,'0');
-    if(mEl)mEl.textContent=String(m).padStart(2,'0');
-    if(sEl)sEl.textContent=String(s).padStart(2,'0');
-    if(d>0)setTimeout(tick,1000);
-  }
-  tick();
 })();
 </script>
 </body>
